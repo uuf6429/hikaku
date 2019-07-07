@@ -71,7 +71,7 @@ class WadlConverter private constructor(private val wadl: String) : AbstractEndp
     private fun createEndpoints(resourceElement: Node): Set<Endpoint> {
         val path = resourceElement.getAttribute("path")
 
-        val methods = xPath.evaluate("//resource[@path=\"$path\"]//method", resourceElement.childNodes, NODESET) as NodeList
+        val methods = xPath.evaluate("//resource[@path='$path']//method", resourceElement.childNodes, NODESET) as NodeList
         val endpoints: MutableSet<Endpoint> = mutableSetOf()
 
         for (i in 0 until methods.length) {
@@ -140,7 +140,7 @@ class WadlConverter private constructor(private val wadl: String) : AbstractEndp
     }
 
     private fun extractParameter(method: Node, style: String): Map<String, Boolean> {
-        val parameters = xPath.evaluate("//param[@style=\"$style\"]", method.childNodes, NODESET) as NodeList
+        val parameters = xPath.evaluate("//param[@style='$style']", method.childNodes, NODESET) as NodeList
         val parameterMap: MutableMap<String, Boolean> = mutableMapOf()
 
         for (i in 0 until parameters.length) {

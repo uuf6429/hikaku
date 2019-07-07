@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.opentest4j.AssertionFailedError
 import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
 
 class HikakuTest {
 
@@ -2035,7 +2036,7 @@ class HikakuTest {
             hikaku.match()
 
             //then
-            assertThat(reporter.hasBeenCalled).isTrue()
+            assertTrue(reporter.hasBeenCalled)
         }
 
         @Test
@@ -2077,8 +2078,8 @@ class HikakuTest {
             hikaku.match()
 
             //then
-            assertThat(firstReporter.hasBeenCalled).isTrue()
-            assertThat(secondReporter.hasBeenCalled).isTrue()
+            assertTrue(firstReporter.hasBeenCalled)
+            assertTrue(secondReporter.hasBeenCalled)
         }
     }
 }

@@ -96,6 +96,7 @@ class SpringConverter(private val applicationContext: ApplicationContext) : Abst
         }
     }
 
+    @Suppress("unused")
     companion object {
         const val IGNORE_ERROR_ENDPOINT = "/error"
     }
