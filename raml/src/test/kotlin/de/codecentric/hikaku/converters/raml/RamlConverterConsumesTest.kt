@@ -30,8 +30,8 @@ class RamlConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        consumes = setOf(
-                                "application/json"
+                        consumes = mapOf(
+                                "application/json" to null
                         )
                 )
         )
@@ -52,9 +52,9 @@ class RamlConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        consumes = setOf(
-                                "application/json",
-                                "application/xml"
+                        consumes = mapOf(
+                                "application/json" to null,
+                                "application/xml" to null
                         )
                 )
         )
@@ -75,8 +75,8 @@ class RamlConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        consumes = setOf(
-                                "text/plain"
+                        consumes = mapOf(
+                                "text/plain" to null
                         )
                 )
         )
@@ -97,9 +97,9 @@ class RamlConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        consumes = setOf(
-                                "application/json",
-                                "application/xml"
+                        consumes = mapOf(
+                                "application/json" to null,
+                                "application/xml" to null
                         )
                 )
         )
@@ -120,8 +120,8 @@ class RamlConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        consumes = setOf(
-                                "text/plain"
+                        consumes = mapOf(
+                                "text/plain" to null
                         )
                 )
         )

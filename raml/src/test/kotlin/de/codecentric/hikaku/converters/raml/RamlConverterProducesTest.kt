@@ -30,8 +30,8 @@ class RamlConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "application/json"
+                        produces = mapOf(
+                                "application/json" to null
                         )
                 )
         )
@@ -52,9 +52,9 @@ class RamlConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "application/json",
-                                "application/xml"
+                        produces = mapOf(
+                                "application/json" to null,
+                                "application/xml" to null
                         )
                 )
         )
@@ -75,8 +75,8 @@ class RamlConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "text/plain"
+                        produces = mapOf(
+                                "text/plain" to null
                         )
                 )
         )
@@ -97,9 +97,9 @@ class RamlConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "application/json",
-                                "application/xml"
+                        produces = mapOf(
+                                "application/json" to null,
+                                "application/xml" to null
                         )
                 )
         )
@@ -120,8 +120,8 @@ class RamlConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "text/plain"
+                        produces = mapOf(
+                                "text/plain" to null
                         )
                 )
         )

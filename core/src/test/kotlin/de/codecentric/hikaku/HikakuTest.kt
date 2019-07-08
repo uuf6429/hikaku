@@ -1378,9 +1378,9 @@ class HikakuTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    produces = setOf(
-                                            "application/json",
-                                            "text/plain"
+                                    produces = mapOf(
+                                            "application/json" to null,
+                                            "text/plain" to null
                                     )
                             )
 
@@ -1393,9 +1393,9 @@ class HikakuTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    produces = setOf(
-                                            "text/plain",
-                                            "application/json"
+                                    produces = mapOf(
+                                            "text/plain" to null,
+                                            "application/json" to null
                                     )
                             )
                     )
@@ -1434,9 +1434,9 @@ class HikakuTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    produces = setOf(
-                                            "application/xml",
-                                            "text/plain"
+                                    produces = mapOf(
+                                            "application/xml" to null,
+                                            "text/plain" to null
                                     )
                             )
 
@@ -1450,8 +1450,8 @@ class HikakuTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    produces = setOf(
-                                            "application/json"
+                                    produces = mapOf(
+                                            "application/json" to null
                                     )
                             )
                     )
@@ -1490,9 +1490,9 @@ class HikakuTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    produces = setOf(
-                                            "application/xml",
-                                            "text/plain"
+                                    produces = mapOf(
+                                            "application/xml" to null,
+                                            "text/plain" to null
                                     )
                             )
 
@@ -1505,8 +1505,8 @@ class HikakuTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    produces = setOf(
-                                            "application/json"
+                                    produces = mapOf(
+                                            "application/json" to null
                                     )
                             )
                     )
@@ -1547,9 +1547,9 @@ class HikakuTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    consumes = setOf(
-                                            "application/json",
-                                            "text/plain"
+                                    consumes = mapOf(
+                                            "application/json" to null,
+                                            "text/plain" to null
                                     )
                             )
 
@@ -1562,9 +1562,9 @@ class HikakuTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    consumes = setOf(
-                                            "text/plain",
-                                            "application/json"
+                                    consumes = mapOf(
+                                            "text/plain" to null,
+                                            "application/json" to null
                                     )
                             )
                     )
@@ -1603,9 +1603,9 @@ class HikakuTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    consumes = setOf(
-                                            "application/xml",
-                                            "text/plain"
+                                    consumes = mapOf(
+                                            "application/xml" to null,
+                                            "text/plain" to null
                                     )
                             )
 
@@ -1619,8 +1619,8 @@ class HikakuTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    consumes = setOf(
-                                            "application/json"
+                                    consumes = mapOf(
+                                            "application/json" to null
                                     )
                             )
                     )
@@ -1659,9 +1659,9 @@ class HikakuTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    consumes = setOf(
-                                            "application/xml",
-                                            "text/plain"
+                                    consumes = mapOf(
+                                            "application/xml" to null,
+                                            "text/plain" to null
                                     )
                             )
 
@@ -1674,8 +1674,8 @@ class HikakuTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    consumes = setOf(
-                                            "application/json"
+                                    consumes = mapOf(
+                                            "application/json" to null
                                     )
                             )
                     )

@@ -17,7 +17,7 @@ class OpenApiConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf("application/json")
+                        produces = mapOf("application/json" to null)
                 )
         )
 
@@ -51,7 +51,7 @@ class OpenApiConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf("application/xml")
+                        produces = mapOf("application/xml" to null)
                 )
         )
 
@@ -70,7 +70,7 @@ class OpenApiConverterProducesTest {
                 Endpoint(
                         path = "/todos/query",
                         httpMethod = GET,
-                        produces = setOf("application/json", "text/plain")
+                        produces = mapOf("application/json" to null, "text/plain" to null)
                 )
         )
 

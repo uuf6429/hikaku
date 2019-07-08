@@ -14,8 +14,8 @@ class JaxRsConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "application/json"
+                        produces = mapOf(
+                                "application/json" to null
                         )
                 )
         )
@@ -34,8 +34,8 @@ class JaxRsConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "application/json"
+                        produces = mapOf(
+                                "application/json" to null
                         )
                 )
         )
@@ -68,8 +68,8 @@ class JaxRsConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "*/*"
+                        produces = mapOf(
+                                "*/*" to null
                         )
                 )
         )
@@ -88,9 +88,9 @@ class JaxRsConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "application/json",
-                                "application/xml"
+                        produces = mapOf(
+                                "application/json" to null,
+                                "application/xml" to null
                         )
                 )
         )
@@ -109,9 +109,9 @@ class JaxRsConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "application/json",
-                                "application/xml"
+                        produces = mapOf(
+                                "application/json" to null,
+                                "application/xml" to null
                         )
                 )
         )
@@ -130,9 +130,9 @@ class JaxRsConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "application/json",
-                                "text/plain"
+                        produces = mapOf(
+                                "application/json" to null,
+                                "text/plain" to null
                         )
                 )
         )

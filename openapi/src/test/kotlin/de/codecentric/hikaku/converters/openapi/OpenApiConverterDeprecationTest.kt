@@ -16,7 +16,7 @@ class OpenApiConverterDeprecationTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf("application/json"),
+                        produces = mapOf("application/json" to null),
                         deprecated = false
                 )
         )
@@ -36,7 +36,7 @@ class OpenApiConverterDeprecationTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf("application/json"),
+                        produces = mapOf("application/json" to null),
                         deprecated = true
                 )
         )

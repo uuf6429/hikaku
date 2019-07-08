@@ -16,9 +16,6 @@ import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets.UTF_8
 import java.nio.file.Files.readAllLines
 import java.nio.file.Path
-import io.swagger.v3.oas.models.parameters.HeaderParameter as OpenApiHeaderParameter
-import io.swagger.v3.oas.models.parameters.PathParameter as OpenApiPathParameter
-import io.swagger.v3.oas.models.parameters.QueryParameter as OpenApiQueryParameter
 
 /**
  * Extracts and converts [Endpoint]s from OpenAPI 3.0.X document. Either a *.yaml*, *.yml* or a *.json* file.
@@ -26,9 +23,10 @@ import io.swagger.v3.oas.models.parameters.QueryParameter as OpenApiQueryParamet
 class OpenApiConverter private constructor(private val specificationContent: String) : AbstractEndpointConverter() {
 
     @JvmOverloads
-    constructor(openApiSpecification: File, charset: Charset = UTF_8): this(openApiSpecification.toPath(), charset)
+    constructor(openApiSpecification: File, charset: Charset = UTF_8) : this(openApiSpecification.toPath(), charset)
+
     @JvmOverloads
-    constructor(openApiSpecification: Path, charset: Charset = UTF_8): this(readFileContent(openApiSpecification, charset))
+    constructor(openApiSpecification: Path, charset: Charset = UTF_8) : this(readFileContent(openApiSpecification, charset))
 
     override val supportedFeatures = SupportedFeatures(
             Feature.QueryParameters,
@@ -70,30 +68,38 @@ class OpenApiConverter private constructor(private val specificationContent: Str
                         queryParameters = commonQueryParameters.union(extractQueryParameters(operation?.parameters)),
                         pathParameters = commonPathParameters.union(extractPathParameters(operation?.parameters)),
                         headerParameters = commonHeaderParameters.union(extractHeaderParameters(operation?.parameters)),
-                        consumes = extractConsumesMediaTypes(operation),
-                        produces = extractProduceMediaTypes(operation),
+                        consumes = extractConsumesMediaTypes(operation)
+                                .map { it to null }
+                                .toMap(),
+                        produces = extractProduceMediaTypes(operation)
+                                .map { it to null }
+                                .toMap(),
                         deprecated = operation?.deprecated ?: false
                 )
             }
         }
         .toSet()
     }
-}
 
-private fun readFileContent(openApiSpecification: Path, charset: Charset): String {
-    try {
-        openApiSpecification.checkFileValidity(".json", ".yaml", ".yml")
-    } catch (throwable: Throwable) {
-        throw EndpointConverterException(throwable)
+    private companion object {
+        @JvmStatic
+        private fun readFileContent(openApiSpecification: Path, charset: Charset): String {
+            try {
+                openApiSpecification.checkFileValidity(".json", ".yaml", ".yml")
+            } catch (throwable: Throwable) {
+                throw EndpointConverterException(throwable)
+            }
+            val fileContent = readAllLines(openApiSpecification, charset).joinToString("\n")
+
+            if (fileContent.isBlank()) {
+                throw EndpointConverterException("Given OpenAPI file is blank.")
+            }
+
+            return fileContent
+        }
+
+        @JvmStatic
+        private fun openApiParseException(reasons: List<String>)
+                = EndpointConverterException("Failed to parse OpenAPI spec. Reasons:\n${reasons.joinToString("\n")}")
     }
-    val fileContent = readAllLines(openApiSpecification, charset).joinToString("\n")
-
-    if (fileContent.isBlank()) {
-        throw EndpointConverterException("Given OpenAPI file is blank.")
-    }
-
-    return fileContent
 }
-
-private fun openApiParseException(reasons: List<String>)
-    = EndpointConverterException("Failed to parse OpenAPI spec. Reasons:\n${reasons.joinToString("\n")}")

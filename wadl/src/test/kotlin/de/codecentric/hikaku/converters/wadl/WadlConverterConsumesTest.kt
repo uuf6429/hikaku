@@ -16,10 +16,10 @@ class WadlConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        consumes = setOf(
-                                "application/json",
-                                "application/xml",
-                                "text/plain"
+                        consumes = mapOf(
+                                "application/json" to null,
+                                "application/xml" to null,
+                                "text/plain" to null
                         )
                 )
         )
@@ -54,10 +54,10 @@ class WadlConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "application/json",
-                                "application/xml",
-                                "text/plain"
+                        produces = mapOf(
+                                "application/json" to null,
+                                "application/xml" to null,
+                                "text/plain" to null
                         )
                 )
         )

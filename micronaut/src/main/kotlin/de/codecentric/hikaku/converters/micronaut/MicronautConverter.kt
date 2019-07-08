@@ -61,8 +61,12 @@ class MicronautConverter(private val packageName: String) : AbstractEndpointConv
                 queryParameters = extractQueryParameters(path, method),
                 pathParameters = extractPathParameters(path, method),
                 headerParameters = extractHeaderParameters(method),
-                consumes = extractConsumes(resource, method),
-                produces = extractProduces(resource, method),
+                consumes = extractConsumes(resource, method)
+                        .map { it to null }
+                        .toMap(),
+                produces = extractProduces(resource, method)
+                        .map { it to null }
+                        .toMap(),
                 deprecated = isEndpointDeprecated(method)
         )
     }

@@ -86,8 +86,12 @@ class WadlConverter private constructor(private val wadl: String) : AbstractEndp
                             headerParameters = extractHeaderParameters(method),
                             pathParameters = extractPathParameters(method),
                             matrixParameters = extractMatrixParameters(method),
-                            produces = extractResponseMediaTypes(method),
+                            produces = extractResponseMediaTypes(method)
+                                    .map { it to null }
+                                    .toMap(),
                             consumes = extractConsumesMediaTypes(method)
+                                    .map { it to null }
+                                    .toMap()
                     )
             )
         }

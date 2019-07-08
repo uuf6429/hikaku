@@ -14,8 +14,8 @@ class JaxRsConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        consumes = setOf(
-                                "application/json"
+                        consumes = mapOf(
+                                "application/json" to null
                         )
                 )
         )
@@ -34,8 +34,8 @@ class JaxRsConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        consumes = setOf(
-                                "application/json"
+                        consumes = mapOf(
+                                "application/json" to null
                         )
                 )
         )
@@ -68,8 +68,8 @@ class JaxRsConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        consumes = setOf(
-                                "*/*"
+                        consumes = mapOf(
+                                "*/*" to null
                         )
                 )
         )
@@ -102,9 +102,9 @@ class JaxRsConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        consumes = setOf(
-                                "application/json",
-                                "application/xml"
+                        consumes = mapOf(
+                                "application/json" to null,
+                                "application/xml" to null
                         )
                 )
         )
@@ -123,9 +123,9 @@ class JaxRsConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        consumes = setOf(
-                                "application/json",
-                                "application/xml"
+                        consumes = mapOf(
+                                "application/json" to null,
+                                "application/xml" to null
                         )
                 )
         )
@@ -144,9 +144,9 @@ class JaxRsConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        consumes = setOf(
-                                "application/json",
-                                "text/plain"
+                        consumes = mapOf(
+                                "application/json" to null,
+                                "text/plain" to null
                         )
                 )
         )

@@ -59,8 +59,12 @@ class JaxRsConverter(private val packageName: String) : AbstractEndpointConverte
             queryParameters = extractQueryParameters(method),
             headerParameters = extractHeaderParameters(method),
             matrixParameters = extractMatrixParameters(method),
-            produces = extractProduces(resource, method),
-            consumes = extractConsumes(resource, method),
+            produces = extractProduces(resource, method)
+                    .map { it to null }
+                    .toMap(),
+            consumes = extractConsumes(resource, method)
+                    .map { it to null }
+                    .toMap(),
             deprecated = isEndpointDeprecated(method)
     )
 

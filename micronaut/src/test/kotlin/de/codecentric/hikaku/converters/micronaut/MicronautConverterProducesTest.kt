@@ -18,8 +18,8 @@ class MicronautConverterProducesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = setOf(
-                                    "text/plain"
+                            produces = mapOf(
+                                    "text/plain" to null
                             )
                     )
             )
@@ -38,9 +38,9 @@ class MicronautConverterProducesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = setOf(
-                                    "text/plain",
-                                    "application/xml"
+                            produces = mapOf(
+                                    "text/plain" to null,
+                                    "application/xml" to null
                             )
                     )
             )
@@ -63,8 +63,8 @@ class MicronautConverterProducesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = setOf(
-                                    "application/xml"
+                            produces = mapOf(
+                                    "application/xml" to null
                             )
                     )
             )
@@ -83,9 +83,9 @@ class MicronautConverterProducesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = setOf(
-                                    "application/json",
-                                    "application/pdf"
+                            produces = mapOf(
+                                    "application/json" to null,
+                                    "application/pdf" to null
                             )
                     )
             )
@@ -108,8 +108,8 @@ class MicronautConverterProducesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = setOf(
-                                    "text/plain"
+                            produces = mapOf(
+                                    "text/plain" to null
                             )
                     )
             )
@@ -128,9 +128,9 @@ class MicronautConverterProducesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = setOf(
-                                    "text/plain",
-                                    "application/xml"
+                            produces = mapOf(
+                                    "text/plain" to null,
+                                    "application/xml" to null
                             )
                     )
             )
@@ -153,8 +153,8 @@ class MicronautConverterProducesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = setOf(
-                                    "application/xml"
+                            produces = mapOf(
+                                    "application/xml" to null
                             )
                     )
             )
@@ -173,9 +173,9 @@ class MicronautConverterProducesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = setOf(
-                                    "application/json",
-                                    "application/pdf"
+                            produces = mapOf(
+                                    "application/json" to null,
+                                    "application/pdf" to null
                             )
                     )
             )
@@ -195,8 +195,8 @@ class MicronautConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf(
-                                "application/json"
+                        produces = mapOf(
+                                "application/json" to null
                         )
                 )
         )

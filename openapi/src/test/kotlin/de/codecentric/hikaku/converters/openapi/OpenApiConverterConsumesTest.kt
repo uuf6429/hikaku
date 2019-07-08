@@ -16,7 +16,7 @@ class OpenApiConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = POST,
-                        consumes = setOf("application/xml")
+                        consumes = mapOf("application/xml" to null)
                 )
         )
 
@@ -35,7 +35,7 @@ class OpenApiConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = POST,
-                        consumes = setOf("application/xml")
+                        consumes = mapOf("application/xml" to null)
                 )
         )
 

@@ -29,13 +29,13 @@ class SpringConverterDeprecationTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = setOf(APPLICATION_JSON_UTF8_VALUE),
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null),
                             deprecated = false
                     ),
                     Endpoint(
                             path = "/todos",
                             httpMethod = HEAD,
-                            produces = setOf(APPLICATION_JSON_UTF8_VALUE),
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null),
                             deprecated = false
                     ),
                     Endpoint("/todos", OPTIONS, deprecated = false)
@@ -63,13 +63,13 @@ class SpringConverterDeprecationTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = setOf(APPLICATION_JSON_UTF8_VALUE),
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null),
                             deprecated = true
                     ),
                     Endpoint(
                             path = "/todos",
                             httpMethod = HEAD,
-                            produces = setOf(APPLICATION_JSON_UTF8_VALUE),
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null),
                             deprecated = true
                     ),
                     Endpoint("/todos", OPTIONS, deprecated = true)
@@ -97,13 +97,13 @@ class SpringConverterDeprecationTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = setOf(APPLICATION_JSON_UTF8_VALUE),
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null),
                             deprecated = true
                     ),
                     Endpoint(
                             path = "/todos",
                             httpMethod = HEAD,
-                            produces = setOf(APPLICATION_JSON_UTF8_VALUE),
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null),
                             deprecated = true
                     ),
                     Endpoint("/todos", OPTIONS, deprecated = true)

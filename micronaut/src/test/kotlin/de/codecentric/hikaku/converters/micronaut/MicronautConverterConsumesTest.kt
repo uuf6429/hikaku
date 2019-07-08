@@ -20,8 +20,8 @@ class MicronautConverterConsumesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = POST,
-                            consumes = setOf(
-                                "text/plain"
+                            consumes = mapOf(
+                                "text/plain" to null
                             )
                     )
             )
@@ -40,9 +40,9 @@ class MicronautConverterConsumesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = POST,
-                            consumes = setOf(
-                                    "text/plain",
-                                    "application/xml"
+                            consumes = mapOf(
+                                    "text/plain" to null,
+                                    "application/xml" to null
                             )
                     )
             )
@@ -65,8 +65,8 @@ class MicronautConverterConsumesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = POST,
-                            consumes = setOf(
-                                    "application/xml"
+                            consumes = mapOf(
+                                    "application/xml" to null
                             )
                     )
             )
@@ -85,9 +85,9 @@ class MicronautConverterConsumesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = POST,
-                            consumes = setOf(
-                                    "application/json",
-                                    "application/pdf"
+                            consumes = mapOf(
+                                    "application/json" to null,
+                                    "application/pdf" to null
                             )
                     )
             )
@@ -110,8 +110,8 @@ class MicronautConverterConsumesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = POST,
-                            consumes = setOf(
-                                    "text/plain"
+                            consumes = mapOf(
+                                    "text/plain" to null
                             )
                     )
             )
@@ -130,9 +130,9 @@ class MicronautConverterConsumesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = POST,
-                            consumes = setOf(
-                                    "text/plain",
-                                    "application/xml"
+                            consumes = mapOf(
+                                    "text/plain" to null,
+                                    "application/xml" to null
                             )
                     )
             )
@@ -155,8 +155,8 @@ class MicronautConverterConsumesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = POST,
-                            consumes = setOf(
-                                    "application/xml"
+                            consumes = mapOf(
+                                    "application/xml" to null
                             )
                     )
             )
@@ -175,9 +175,9 @@ class MicronautConverterConsumesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = POST,
-                            consumes = setOf(
-                                    "application/json",
-                                    "application/pdf"
+                            consumes = mapOf(
+                                    "application/json" to null,
+                                    "application/pdf" to null
                             )
                     )
             )
@@ -197,8 +197,8 @@ class MicronautConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = POST,
-                        consumes = setOf(
-                                "application/json"
+                        consumes = mapOf(
+                                "application/json" to null
                         )
                 )
         )

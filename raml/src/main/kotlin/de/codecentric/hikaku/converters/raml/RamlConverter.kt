@@ -68,8 +68,12 @@ class RamlConverter(private val ramlSpecification: File) : AbstractEndpointConve
                             queryParameters = it.hikakuQueryParameters(),
                             pathParameters = it.resource()?.hikakuPathParameters().orEmpty(),
                             headerParameters = it?.hikakuHeaderParameters().orEmpty(),
-                            consumes = it.requestMediaTypes(),
-                            produces = it.responseMediaTypes(),
+                            consumes = it.requestMediaTypes()
+                                    .map { it to null }
+                                    .toMap(),
+                            produces = it.responseMediaTypes()
+                                    .map { it to null }
+                                    .toMap(),
                             deprecated = it.isEndpointDeprecated()
                     )
             }

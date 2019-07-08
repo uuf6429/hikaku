@@ -18,13 +18,13 @@ class SupportedFeatures(
         PathParameters,
         /** Checks the equality of header parameters. */
         HeaderParameters,
-        /** Checks supported media type of responses. */
-        Produces,
         /** Checks supported media type of requests. */
-        Consumes,
+        Produces,
         /** Checks the equality of matrix parameters. */
+        Consumes,
+        /** Checks supported media type of responses. */
         MatrixParameters,
         /** Checks the equality of deprecation. */
-        Deprecation
+        Deprecation,
     }
 }

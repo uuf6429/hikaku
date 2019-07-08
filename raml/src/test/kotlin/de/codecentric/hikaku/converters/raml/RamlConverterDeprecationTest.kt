@@ -17,7 +17,7 @@ class RamlConverterDeprecationTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf("text/plain"),
+                        produces = mapOf("text/plain" to null),
                         deprecated = false
                 )
         )
@@ -38,7 +38,7 @@ class RamlConverterDeprecationTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf("text/plain"),
+                        produces = mapOf("text/plain" to null),
                         deprecated = true
                 )
         )
@@ -59,7 +59,7 @@ class RamlConverterDeprecationTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = setOf("text/plain"),
+                        produces = mapOf("text/plain" to null),
                         deprecated = true
                 )
         )

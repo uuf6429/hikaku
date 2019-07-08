@@ -27,9 +27,9 @@ class SpringConverterProducesServletResponseTest {
             fun `media type and response servlet argument declared and no return type results in proper media type`() {
                 //given
                 val specification: Set<Endpoint> = setOf(
-                        Endpoint("/test", GET, produces = setOf("text/plain")),
-                        Endpoint("/test", HEAD, produces = setOf("text/plain")),
-                        Endpoint("/test", OPTIONS, produces = setOf())
+                        Endpoint("/test", GET, produces = mapOf("text/plain" to null)),
+                        Endpoint("/test", HEAD, produces = mapOf("text/plain" to null)),
+                        Endpoint("/test", OPTIONS, produces = mapOf())
                 )
 
                 //when
