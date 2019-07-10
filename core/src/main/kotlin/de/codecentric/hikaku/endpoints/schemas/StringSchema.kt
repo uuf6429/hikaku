@@ -6,4 +6,11 @@ class StringSchema(
 ): SchemaInterface {
     override val type: String
         get() = "string"
+
+    override fun toString(): String = "string(${minLength ?: "*"}..${maxLength ?: "*"})"
+
+    override fun equals(other: Any?): Boolean =
+            other is StringSchema
+                    && other.minLength == this.minLength
+                    && other.maxLength === this.maxLength
 }

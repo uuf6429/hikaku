@@ -7,4 +7,12 @@ class ArraySchema(
 ): SchemaInterface {
     override val type: String
         get() = "array"
+
+    override fun toString(): String = "${items.type}[${minItems ?: "*"}..${maxItems ?: "*"}]"
+
+    override fun equals(other: Any?): Boolean =
+            other is ArraySchema
+                    && other.items == this.items
+                    && other.minItems == this.minItems
+                    && other.maxItems === this.maxItems
 }

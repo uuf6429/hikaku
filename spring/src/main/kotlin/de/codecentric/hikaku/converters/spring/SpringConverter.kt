@@ -51,12 +51,10 @@ class SpringConverter(private val applicationContext: ApplicationContext) : Abst
                     pathParameters = mappingEntry.value.hikakuPathParameters(),
                     headerParameters = mappingEntry.value.hikakuHeaderParameters(),
                     matrixParameters = mappingEntry.value.hikakuMatrixParameters(),
-                    produces = mappingEntry.produces()
+                    produces = mappingEntry.produces() // TODO
                             .map { it to null }
                             .toMap(),
-                    consumes = mappingEntry.consumes()
-                            .map { it to null }
-                            .toMap(),
+                    consumes = mappingEntry.consumes(),
                     deprecated = mappingEntry.isEndpointDeprecated()
             )
         }
