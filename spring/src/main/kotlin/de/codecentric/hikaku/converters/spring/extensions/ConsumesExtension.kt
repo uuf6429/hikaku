@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.method.HandlerMethod
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo
 import kotlin.reflect.KParameter
+import kotlin.reflect.KProperty
+import kotlin.reflect.KProperty1
+import kotlin.reflect.KType
+import kotlin.reflect.full.memberProperties
 import kotlin.reflect.jvm.jvmErasure
 import kotlin.reflect.jvm.kotlinFunction
 
@@ -58,7 +62,46 @@ internal fun KParameter.toSchema(): SchemaInterface? {
             FloatSchema(null, null)
         this.type.jvmErasure.java == String::class.java ->
             StringSchema(null, null)
-        // TODO handle data objects and arrays
+        this.type.jvmErasure.isData ->
+            ObjectSchema(
+                    this.type.jvmErasure.memberProperties
+                            .map {
+                                it.name to it.returnType.toSchema()
+                            }
+                            .filter {
+                                it.second != null
+                            }
+                            .map {
+                                it.first to it.second!!
+                            }
+                            .toMap()
+            )
+        // TODO handle arrays
+//        this.type.jvmErasure.java == String::class.java ->
+//            StringSchema(null, null)
+        else ->
+            null
+    }
+}
+internal fun KType.toSchema(): SchemaInterface? {
+    return when {
+        this.jvmErasure.java == Boolean::class.java ->
+            BoolSchema()
+        this.jvmErasure.java == Int::class.java ->
+            IntegerSchema(null, null)
+        this.jvmErasure.java == Float::class.java ->
+            FloatSchema(null, null)
+        this.jvmErasure.java == String::class.java ->
+            StringSchema(null, null)
+//        this.jvmErasure.isData ->
+//            ObjectSchema(
+//                    this.jvmErasure.memberProperties
+//                            .map {
+//                                it.name to it.toSchema()
+//                            }
+//                            .toMap()
+//            )
+        // TODO handle arrays
 //        this.type.jvmErasure.java == String::class.java ->
 //            StringSchema(null, null)
         else ->

@@ -2,6 +2,7 @@ package de.codecentric.hikaku.converters.spring
 
 import de.codecentric.hikaku.endpoints.Endpoint
 import de.codecentric.hikaku.endpoints.HttpMethod.*
+import de.codecentric.hikaku.endpoints.schemas.ObjectSchema
 import de.codecentric.hikaku.endpoints.schemas.StringSchema
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -51,12 +52,12 @@ class SpringSchemaTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = POST,
-                        consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                        consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to ObjectSchema(mapOf("name" to StringSchema(null, null))))
                 ),
                 Endpoint(
                         path = "/todos",
                         httpMethod = HEAD,
-                        consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                        consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to ObjectSchema(mapOf("name" to StringSchema(null, null))))
                 ),
                 Endpoint(
                         path = "/todos",
