@@ -2,6 +2,7 @@ package de.codecentric.hikaku.converters.spring
 
 import de.codecentric.hikaku.endpoints.Endpoint
 import de.codecentric.hikaku.endpoints.HttpMethod.*
+import de.codecentric.hikaku.endpoints.schemas.ArraySchema
 import de.codecentric.hikaku.endpoints.schemas.ObjectSchema
 import de.codecentric.hikaku.endpoints.schemas.StringSchema
 import org.assertj.core.api.Assertions.assertThat
@@ -20,18 +21,18 @@ import org.springframework.web.bind.annotation.RequestBody
 @SpringBootApplication
 open class DummyApp
 
-data class TodoInput(val name: String)
-data class TodoOutput(val id: Int, val name: String)
+data class TodoInput(val name: String, val tags: List<String>)
+data class TodoOutput(val id: Int, val name: String, val tags: List<String>)
 
 @Controller
 open class ControllerUnderTest {
     @GetMapping("/todos")
-    fun todos(): List<TodoOutput> = listOf(TodoOutput(1, "test"))
+    fun todos(): List<TodoOutput> = listOf(TodoOutput(1, "test", emptyList()))
 
     @PostMapping("/todos")
     fun todos(
             @Suppress("UNUSED_PARAMETER")
-            @RequestBody todo: TodoInput
+            @RequestBody todo: List<TodoInput>
     ) { }
 }
 
@@ -52,12 +53,30 @@ class SpringSchemaTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = POST,
-                        consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to ObjectSchema(mapOf("name" to StringSchema(null, null))))
+                        consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to ArraySchema(
+                            ObjectSchema(
+                                mapOf(
+                                    "name" to StringSchema(null, null),
+                                    "tags" to ArraySchema(StringSchema(null, null), null, null)
+                                )
+                            ),
+                            null,
+                            null
+                        ))
                 ),
                 Endpoint(
                         path = "/todos",
                         httpMethod = HEAD,
-                        consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to ObjectSchema(mapOf("name" to StringSchema(null, null))))
+                        consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to ArraySchema(
+                            ObjectSchema(
+                                mapOf(
+                                    "name" to StringSchema(null, null),
+                                    "tags" to ArraySchema(StringSchema(null, null), null, null)
+                                )
+                            ),
+                            null,
+                            null
+                        ))
                 ),
                 Endpoint(
                         path = "/todos",

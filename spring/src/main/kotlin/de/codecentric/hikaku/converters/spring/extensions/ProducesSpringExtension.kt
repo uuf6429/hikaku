@@ -1,5 +1,6 @@
 package de.codecentric.hikaku.converters.spring.extensions
 
+import de.codecentric.hikaku.endpoints.schemas.SchemaInterface
 import org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE
 import org.springframework.http.MediaType.TEXT_PLAIN_VALUE
 import org.springframework.web.bind.annotation.ResponseBody
@@ -12,41 +13,42 @@ import kotlin.reflect.full.instanceParameter
 import kotlin.reflect.jvm.jvmErasure
 import kotlin.reflect.jvm.kotlinFunction
 
-internal fun Map.Entry<RequestMappingInfo, HandlerMethod>.produces(): Set<String> {
+internal fun Map.Entry<RequestMappingInfo, HandlerMethod>.produces(): Map<String, SchemaInterface?> {
     val isNotErrorPath = !this.key.patternsCondition.patterns.contains("/error")
     val hasNoResponseBodyAnnotation = !this.value.providesResponseBodyAnnotation()
     val hasNoRestControllerAnnotation = !this.value.providesRestControllerAnnotation()
-    val hasHttpServletResponseParam = this.value.hasHttpServletResponseParam()
+    val servletResponseParam = this.value.getHttpServletResponseParam()
+    val methodReturnType = this.value.method.kotlinFunction?.returnType
 
     if (isNotErrorPath && (hasNoResponseBodyAnnotation && hasNoRestControllerAnnotation)) {
-        return emptySet()
+        return emptyMap()
     }
 
-    if (isNotErrorPath && (this.value.method.hasNoReturnType() && !hasHttpServletResponseParam)) {
-        return emptySet()
+    if (isNotErrorPath && (this.value.method.hasNoReturnType() && servletResponseParam === null)) {
+        return emptyMap()
     }
 
+    val schema: SchemaInterface? = null
+    // TODO fill schema
     val produces = this.key
             .producesCondition
             .expressions
-            .map { it.mediaType.toString() }
-            .toSet()
+            .map { it.mediaType.toString() to schema }
 
     if (produces.isNotEmpty()) {
-        return produces
+        return produces.toMap()
     }
 
-    val isParameterString = this.value
-            .method
-            .kotlinFunction
-            ?.returnType
-            ?.jvmErasure
-            ?.java == java.lang.String::class.java
+    val isParameterString = methodReturnType
+        ?.jvmErasure
+        .let {
+            it?.java == java.lang.String::class.java
+        }
 
     return if (isParameterString) {
-        setOf(TEXT_PLAIN_VALUE)
+        mapOf(TEXT_PLAIN_VALUE to schema)
     } else {
-        setOf(APPLICATION_JSON_UTF8_VALUE)
+        mapOf(APPLICATION_JSON_UTF8_VALUE to schema)
     }
 }
 
@@ -79,5 +81,9 @@ private val javaxServletResponseClass: Class<*>? =
             null
         })
 
-private fun HandlerMethod.hasHttpServletResponseParam() = this.methodParameters
-        .any { javaxServletResponseClass !== null && it.parameterType.isAssignableFrom(javaxServletResponseClass) }
+private fun HandlerMethod.getHttpServletResponseParam() =
+        this.methodParameters
+            .firstOrNull {
+                javaxServletResponseClass !== null
+                    && it.parameterType.isAssignableFrom(javaxServletResponseClass)
+            }

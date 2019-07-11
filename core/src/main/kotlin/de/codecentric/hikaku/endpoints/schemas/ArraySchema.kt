@@ -8,7 +8,7 @@ class ArraySchema(
     override val type: String
         get() = "array"
 
-    override fun toString(): String = "${items.type}[${minItems ?: "*"}..${maxItems ?: "*"}]"
+    override fun toString(): String = "$items[${minItems ?: "*"}..${maxItems ?: "*"}]"
 
     override fun equals(other: Any?): Boolean =
             other is ArraySchema
