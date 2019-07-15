@@ -43,20 +43,27 @@ class SpringConverter(private val applicationContext: ApplicationContext) : Abst
         val httpMethods = extractAvailableHttpMethods(mappingEntry)
         val cleanedPath = removeRegex(path)
 
-        val endpoints = httpMethods.map {
-            Endpoint(
-                    path = cleanedPath,
-                    httpMethod = it,
-                    queryParameters = mappingEntry.value.hikakuQueryParameters(),
-                    pathParameters = mappingEntry.value.hikakuPathParameters(),
-                    headerParameters = mappingEntry.value.hikakuHeaderParameters(),
-                    matrixParameters = mappingEntry.value.hikakuMatrixParameters(),
-                    produces = mappingEntry.produces(),
-                    consumes = mappingEntry.consumes(),
-                    deprecated = mappingEntry.isEndpointDeprecated()
-            )
-        }
-        .toMutableSet()
+        val queryParameters = mappingEntry.value.hikakuQueryParameters()
+        val pathParameters = mappingEntry.value.hikakuPathParameters()
+        val headerParameters = mappingEntry.value.hikakuHeaderParameters()
+        val matrixParameters = mappingEntry.value.hikakuMatrixParameters()
+        val deprecated = mappingEntry.isEndpointDeprecated()
+
+        val endpoints = httpMethods
+                .map {
+                    Endpoint(
+                            path = cleanedPath,
+                            httpMethod = it,
+                            queryParameters = queryParameters,
+                            pathParameters = pathParameters,
+                            headerParameters = headerParameters,
+                            matrixParameters = matrixParameters,
+                            produces = it.produces(mappingEntry),
+                            consumes = it.consumes(mappingEntry),
+                            deprecated = deprecated
+                    )
+                }
+                .toMutableSet()
 
         // Spring always adds an OPTIONS http method if it does not exist, but without query and path parameter
         if (!httpMethods.contains(OPTIONS)) {

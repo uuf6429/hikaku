@@ -1,7 +1,7 @@
 package de.codecentric.hikaku.endpoints
 
 import de.codecentric.hikaku.endpoints.HttpMethod.OPTIONS
-import de.codecentric.hikaku.endpoints.schemas.SchemaInterface
+import de.codecentric.hikaku.endpoints.schemas.Schema
 
 /**
  * A single [Endpoint] containing all information. Each [Endpoint] consists of exactly one path in combination with exactly one [HttpMethod].
@@ -17,7 +17,7 @@ data class Endpoint(
         val pathParameters: Set<PathParameter> = emptySet(),
         val headerParameters: Set<HeaderParameter> = emptySet(),
         val matrixParameters: Set<MatrixParameter> = emptySet(),
-        val produces: Map<String, SchemaInterface?> = emptyMap(),
-        val consumes: Map<String, SchemaInterface?> = emptyMap(),
+        val produces: Map<String, Schema?> = emptyMap(),
+        val consumes: Map<String, Schema?> = emptyMap(),
         val deprecated: Boolean = false
 )

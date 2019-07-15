@@ -1,20 +1,17 @@
 package de.codecentric.hikaku.converters.spring.extensions
 
+import de.codecentric.hikaku.endpoints.HttpMethod
 import de.codecentric.hikaku.endpoints.schemas.*
 import org.springframework.http.MediaType.ALL_VALUE
 import org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.method.HandlerMethod
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo
-import kotlin.reflect.KClass
-import kotlin.reflect.KParameter
-import kotlin.reflect.full.isSubclassOf
-import kotlin.reflect.full.memberProperties
 import kotlin.reflect.jvm.jvmErasure
 import kotlin.reflect.jvm.kotlinFunction
 
-internal fun Map.Entry<RequestMappingInfo, HandlerMethod>.consumes(): Map<String, SchemaInterface?> {
-    val requestBodyParameter = this.value
+internal fun HttpMethod.consumes(entry: Map.Entry<RequestMappingInfo, HandlerMethod>): Map<String, Schema?> {
+    val requestBodyParameter = entry.value
             .method
             .kotlinFunction
             ?.parameters
@@ -28,10 +25,16 @@ internal fun Map.Entry<RequestMappingInfo, HandlerMethod>.consumes(): Map<String
         return emptyMap()
     }
 
-    val consumes = this.key
+    val schema: Schema? =
+            if (this.name == "HEAD")
+                null
+            else
+                requestBodyParameter.toSchema()
+
+    val consumes = entry.key
             .consumesCondition
             .expressions
-            .map { it.mediaType.toString() to requestBodyParameter.toSchema() }
+            .map { it.mediaType.toString() to schema }
 
     if (consumes.isNotEmpty()) {
         return consumes.toMap()
@@ -45,8 +48,8 @@ internal fun Map.Entry<RequestMappingInfo, HandlerMethod>.consumes(): Map<String
             }
 
     return if (isParameterString) {
-        mapOf(ALL_VALUE to requestBodyParameter.toSchema() )
+        mapOf(ALL_VALUE to schema)
     } else {
-        mapOf(APPLICATION_JSON_UTF8_VALUE to requestBodyParameter.toSchema() )
+        mapOf(APPLICATION_JSON_UTF8_VALUE to schema)
     }
 }

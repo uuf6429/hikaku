@@ -1,6 +1,7 @@
 package de.codecentric.hikaku.converters.spring.extensions
 
-import de.codecentric.hikaku.endpoints.schemas.SchemaInterface
+import de.codecentric.hikaku.endpoints.HttpMethod
+import de.codecentric.hikaku.endpoints.schemas.Schema
 import org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE
 import org.springframework.http.MediaType.TEXT_PLAIN_VALUE
 import org.springframework.web.bind.annotation.ResponseBody
@@ -12,25 +13,34 @@ import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.instanceParameter
 import kotlin.reflect.jvm.jvmErasure
 import kotlin.reflect.jvm.kotlinFunction
+import javax.servlet.http.HttpServletResponse
 
-internal fun Map.Entry<RequestMappingInfo, HandlerMethod>.produces(): Map<String, SchemaInterface?> {
-    val isNotErrorPath = !this.key.patternsCondition.patterns.contains("/error")
-    val hasNoResponseBodyAnnotation = !this.value.providesResponseBodyAnnotation()
-    val hasNoRestControllerAnnotation = !this.value.providesRestControllerAnnotation()
-    val servletResponseParam = this.value.getHttpServletResponseParam()
-    val methodReturnType = this.value.method.kotlinFunction?.returnType
+internal fun HttpMethod.produces(entry: Map.Entry<RequestMappingInfo, HandlerMethod>): Map<String, Schema?> {
+    val isNotErrorPath = !entry.key.patternsCondition.patterns.contains("/error")
+    val hasNoResponseBodyAnnotation = !entry.value.providesResponseBodyAnnotation()
+    val hasNoRestControllerAnnotation = !entry.value.providesRestControllerAnnotation()
+    val servletResponseParam = entry.value.getHttpServletResponseParam()
+    val methodReturnType = entry.value.method.kotlinFunction?.returnType
 
     if (isNotErrorPath && (hasNoResponseBodyAnnotation && hasNoRestControllerAnnotation)) {
         return emptyMap()
     }
 
-    if (isNotErrorPath && (this.value.method.hasNoReturnType() && servletResponseParam === null)) {
+    if (isNotErrorPath && (entry.value.method.hasNoReturnType() && servletResponseParam === null)) {
         return emptyMap()
     }
 
-    val schema: SchemaInterface? = null
-    // TODO fill schema
-    val produces = this.key
+    val schema: Schema? =
+            if (this.name == "HEAD")
+                null
+            else
+                methodReturnType?.toSchema()/*
+            if (servletResponseParam !== null)
+                servletResponseParam.genericParameterType.toSchema()
+            else
+                methodReturnType.toSchema()*/
+
+    val produces = entry.key
             .producesCondition
             .expressions
             .map { it.mediaType.toString() to schema }
@@ -40,10 +50,10 @@ internal fun Map.Entry<RequestMappingInfo, HandlerMethod>.produces(): Map<String
     }
 
     val isParameterString = methodReturnType
-        ?.jvmErasure
-        .let {
-            it?.java == java.lang.String::class.java
-        }
+            ?.jvmErasure
+            .let {
+                it?.java == java.lang.String::class.java
+            }
 
     return if (isParameterString) {
         mapOf(TEXT_PLAIN_VALUE to schema)
@@ -74,16 +84,6 @@ private fun HandlerMethod.isResponseBodyAnnotationOnFunction() = this.method
         .kotlinFunction
         ?.findAnnotation<ResponseBody>() != null
 
-private val javaxServletResponseClass: Class<*>? =
-        (try {
-            Class.forName("javax.servlet.http.HttpServletResponse")
-        } catch (ex: Throwable) {
-            null
-        })
-
 private fun HandlerMethod.getHttpServletResponseParam() =
         this.methodParameters
-            .firstOrNull {
-                javaxServletResponseClass !== null
-                    && it.parameterType.isAssignableFrom(javaxServletResponseClass)
-            }
+                .firstOrNull { it.parameterType is HttpServletResponse }

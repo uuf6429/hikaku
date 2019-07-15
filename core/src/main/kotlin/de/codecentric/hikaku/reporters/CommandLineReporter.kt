@@ -3,7 +3,7 @@ package de.codecentric.hikaku.reporters
 import de.codecentric.hikaku.SupportedFeatures
 import de.codecentric.hikaku.SupportedFeatures.*
 import de.codecentric.hikaku.endpoints.*
-import de.codecentric.hikaku.endpoints.schemas.SchemaInterface
+import de.codecentric.hikaku.endpoints.schemas.Schema
 
 /**
  * Simply prints the result to [System.out].
@@ -82,9 +82,9 @@ class CommandLineReporter : Reporter {
                 "${it.parameterName} (${if(it.required) "required" else "optional"})"
             }}]"
 
-    private fun listRequestMediaTypes(requestMediaTypes: Map<String, SchemaInterface?>) =
+    private fun listRequestMediaTypes(requestMediaTypes: Map<String, Schema?>) =
             "  Consumes[${requestMediaTypes.map{"${it.key}(${it.value})"}.joinToString()}]"
 
-    private fun listResponseMediaTypes(responseMediaTypes: Map<String, SchemaInterface?>) =
+    private fun listResponseMediaTypes(responseMediaTypes: Map<String, Schema?>) =
             "  Produces[${responseMediaTypes.map{"${it.key}(${it.value})"}.joinToString()}]"
 }

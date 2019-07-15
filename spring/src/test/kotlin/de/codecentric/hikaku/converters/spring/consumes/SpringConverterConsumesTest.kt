@@ -3,7 +3,7 @@ package de.codecentric.hikaku.converters.spring.consumes
 import de.codecentric.hikaku.converters.spring.SpringConverter
 import de.codecentric.hikaku.endpoints.Endpoint
 import de.codecentric.hikaku.endpoints.HttpMethod.*
-import de.codecentric.hikaku.endpoints.schemas.StringSchema
+import de.codecentric.hikaku.endpoints.schemas.String
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -253,32 +253,32 @@ class SpringConverterConsumesTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                    consumes = mapOf(ALL_VALUE to String(null, null))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = POST,
-                                    consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                    consumes = mapOf(ALL_VALUE to String(null, null))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = HEAD,
-                                    consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                    consumes = mapOf(ALL_VALUE to String(null, null))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = PUT,
-                                    consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                    consumes = mapOf(ALL_VALUE to String(null, null))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = PATCH,
-                                    consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                    consumes = mapOf(ALL_VALUE to String(null, null))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = DELETE,
-                                    consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                    consumes = mapOf(ALL_VALUE to String(null, null))
                             ),
                             Endpoint("/todos", OPTIONS)
                     )
@@ -493,32 +493,32 @@ class SpringConverterConsumesTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                    consumes = mapOf(ALL_VALUE to String(null, null))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = POST,
-                                    consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                    consumes = mapOf(ALL_VALUE to String(null, null))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = HEAD,
-                                    consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                    consumes = mapOf(ALL_VALUE to String(null, null))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = PUT,
-                                    consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                    consumes = mapOf(ALL_VALUE to String(null, null))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = PATCH,
-                                    consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                    consumes = mapOf(ALL_VALUE to String(null, null))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = DELETE,
-                                    consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                    consumes = mapOf(ALL_VALUE to String(null, null))
                             ),
                             Endpoint("/todos", OPTIONS)
                     )
@@ -674,12 +674,12 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                consumes = mapOf(ALL_VALUE to String(null, null))
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = HEAD,
-                                consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                consumes = mapOf(ALL_VALUE to String(null, null))
                         ),
                         Endpoint("/todos", OPTIONS)
                 )
@@ -830,12 +830,12 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = DELETE,
-                                consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                consumes = mapOf(ALL_VALUE to String(null, null))
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = HEAD,
-                                consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                consumes = mapOf(ALL_VALUE to String(null, null))
                         ),
                         Endpoint("/todos", OPTIONS)
                 )
@@ -986,12 +986,12 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                consumes = mapOf(ALL_VALUE to String(null, null))
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = HEAD,
-                                consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                consumes = mapOf(ALL_VALUE to String(null, null))
                         ),
                         Endpoint("/todos", OPTIONS)
                 )
@@ -1142,12 +1142,12 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                consumes = mapOf(ALL_VALUE to String(null, null))
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = HEAD,
-                                consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                consumes = mapOf(ALL_VALUE to String(null, null))
                         ),
                         Endpoint("/todos", OPTIONS)
                 )
@@ -1298,12 +1298,12 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                consumes = mapOf(ALL_VALUE to String(null, null))
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = HEAD,
-                                consumes = mapOf(ALL_VALUE to StringSchema(null, null))
+                                consumes = mapOf(ALL_VALUE to String(null, null))
                         ),
                         Endpoint("/todos", OPTIONS)
                 )
