@@ -1,14 +1,19 @@
 package de.codecentric.hikaku.converters.spring.extensions
 
 import de.codecentric.hikaku.endpoints.schemas.*
+import de.codecentric.hikaku.endpoints.schemas.Array
+import de.codecentric.hikaku.endpoints.schemas.Boolean
+import de.codecentric.hikaku.endpoints.schemas.Float
+import de.codecentric.hikaku.endpoints.schemas.String
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Max
 import javax.validation.constraints.Min
 import kotlin.reflect.*
+import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.isSubclassOf
 import kotlin.reflect.full.memberProperties
-import kotlin.reflect.jvm.javaField
+import kotlin.reflect.full.primaryConstructor
 import kotlin.reflect.jvm.jvmErasure
 
 internal fun KParameter.toSchema(): Schema? =
@@ -31,20 +36,23 @@ internal fun KType.toSchema(): Schema? =
 
 internal fun KClass<*>.toSchema(annotations: KAnnotatedElement?, variantArgs: List<Schema?>?): Schema? {
     return when {
-        this.java == Boolean::class.java ->
+        this.java == kotlin.Boolean::class.java ->
             Boolean()
-        this.java == Int::class.java ->
+        this.java == kotlin.Int::class.java ->
             Integer(annotations.minInt, annotations.maxInt)
-        this.java == Float::class.java ->
+        this.java == kotlin.Float::class.java ->
             Float(annotations.minDec, annotations.maxDec)
-        this.java == String::class.java ->
+        this.java == kotlin.String::class.java ->
             String(annotations.minInt, annotations.maxInt)
         this.isData ->
             Object(
-                    memberProperties
+                    this.memberProperties
                             .map { prop ->
                                 prop.name to prop.returnType.jvmErasure.toSchema(
-                                        prop,
+                                        AnnotationExtractor(
+                                            prop,
+                                            this.primaryConstructor?.parameters?.find { it.name == prop.name }
+                                        ),
                                         prop.returnType.arguments.mapNotNull { type -> type.toSchema() }
                                 )
                             }
@@ -71,33 +79,21 @@ internal fun KClass<*>.toSchema(annotations: KAnnotatedElement?, variantArgs: Li
 
 internal val KAnnotatedElement?.minInt
     get() =
-        this?.annotation<Min>()?.value?.toInt()
+        this?.findAnnotation<Min>()?.value?.toInt()
 
 internal val KAnnotatedElement?.maxInt
     get() =
-        this?.annotation<Max>()?.value?.toInt()
+        this?.findAnnotation<Max>()?.value?.toInt()
 
 internal val KAnnotatedElement?.minDec
     get() =
-        this?.annotation<DecimalMin>()?.value?.toFloat()
+        this?.findAnnotation<DecimalMin>()?.value?.toFloat()
 
 internal val KAnnotatedElement?.maxDec
     get() =
-        this?.annotation<DecimalMax>()?.value?.toFloat()
+        this?.findAnnotation<DecimalMax>()?.value?.toFloat()
 
-internal val KAnnotatedElement?.allAnnotations
-    get() =
-        this?.annotations.orEmpty()
-                .union(
-                        if (this is KProperty<*>) this.javaField?.annotations?.toList().orEmpty() else emptyList()
-                )
-                .union(
-                        if (this is KProperty1<*, *>) this.javaField?.annotations?.toList().orEmpty() else emptyList()
-                )
-                .union(
-                        if (this is KProperty2<*, *, *>) this.javaField?.annotations?.toList().orEmpty() else emptyList()
-                )
-
-internal inline fun <reified T : Annotation> KAnnotatedElement.annotation(): T? =
-        @Suppress("UNCHECKED_CAST")
-        this.allAnnotations.firstOrNull { it is T } as T?
+data class AnnotationExtractor(override val annotations: List<Annotation>) : KAnnotatedElement {
+    constructor(vararg providers: KAnnotatedElement?) :
+        this(providers.map { it?.annotations.orEmpty() }.flatten())
+}

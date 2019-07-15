@@ -13,11 +13,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.context.ConfigurableApplicationContext
+import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType.*
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
+import javax.servlet.http.HttpServletResponse
 import javax.validation.constraints.Min
 
 @SpringBootApplication
@@ -29,7 +29,8 @@ data class TodoOutput(@Min(1) val id: Int, val name: kotlin.String, val tags: Li
 @RestController
 open class ControllerUnderTest {
     @GetMapping("/todos")
-    fun todos(): List<TodoOutput> = listOf(TodoOutput(1, "test", emptyList()))
+    fun todos(): ResponseEntity<List<TodoOutput>> = ResponseEntity(HttpStatus.OK)
+    //fun todos(): List<TodoOutput> = listOf(TodoOutput(1, "test", emptyList()))
 
     @PostMapping("/todos")
     fun todos(
