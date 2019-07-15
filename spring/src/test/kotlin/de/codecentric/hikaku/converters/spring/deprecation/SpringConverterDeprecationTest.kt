@@ -3,6 +3,8 @@ package de.codecentric.hikaku.converters.spring.deprecation
 import de.codecentric.hikaku.converters.spring.SpringConverter
 import de.codecentric.hikaku.endpoints.Endpoint
 import de.codecentric.hikaku.endpoints.HttpMethod.*
+import de.codecentric.hikaku.endpoints.schemas.Object
+import de.codecentric.hikaku.endpoints.schemas.String
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -10,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.context.ConfigurableApplicationContext
-import org.springframework.http.MediaType
 import org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE
 
 class SpringConverterDeprecationTest {
@@ -29,7 +30,7 @@ class SpringConverterDeprecationTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null),
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String()))),
                             deprecated = false
                     ),
                     Endpoint(
@@ -63,7 +64,7 @@ class SpringConverterDeprecationTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null),
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String()))),
                             deprecated = true
                     ),
                     Endpoint(
@@ -97,7 +98,7 @@ class SpringConverterDeprecationTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null),
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String()))),
                             deprecated = true
                     ),
                     Endpoint(

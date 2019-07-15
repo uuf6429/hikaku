@@ -2,8 +2,8 @@ package de.codecentric.hikaku.endpoints.schemas
 
 data class Array(
         val items: Schema,
-        val minItems: Int?,
-        val maxItems: Int?
+        val minItems: Int? = null,
+        val maxItems: Int? = null
 ) : Schema {
     override val type
         get() = "array"

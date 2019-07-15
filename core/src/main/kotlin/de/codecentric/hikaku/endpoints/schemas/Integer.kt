@@ -1,8 +1,8 @@
 package de.codecentric.hikaku.endpoints.schemas
 
 data class Integer(
-        val minValue: Int?,
-        val maxValue: Int?
+        val minValue: Int? = null,
+        val maxValue: Int? = null
 ) : Schema {
     override val type
         get() = "integer"

@@ -1,7 +1,7 @@
 package de.codecentric.hikaku.endpoints.schemas
 
 data class Combination(
-        val schemas: List<Schema>
+        val schemas: List<Schema> = emptyList()
 ) : Schema {
     override val type
         get() = "mix"
