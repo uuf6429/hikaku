@@ -5,9 +5,10 @@ data class Array(
         val minItems: Int? = null,
         val maxItems: Int? = null
 ) : Schema {
-    override val type
-        get() = "array"
-
     override fun toString() =
-            "{type: arr, min: ${minItems ?: "*"}, max: ${maxItems ?: "*"}, items: $items}"
+            "Array(${this.stringifyAssignedProperties(
+                this::items to null,
+                this::minItems to null,
+                this::maxItems to null
+            )})"
 }

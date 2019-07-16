@@ -4,9 +4,9 @@ data class Integer(
         val minValue: Int? = null,
         val maxValue: Int? = null
 ) : Schema {
-    override val type
-        get() = "integer"
-
     override fun toString() =
-            "{type: int, min: ${minValue ?: "*"}, max: ${maxValue ?: "*"}}"
+            "Integer(${this.stringifyAssignedProperties(
+                this::minValue to null,
+                this::maxValue to null
+            )})"
 }

@@ -46,7 +46,7 @@ class SpringConverterConsumesTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = HEAD,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
+                                    consumes = mapOf(APPLICATION_XML_VALUE to null)
                             ),
                             Endpoint(
                                     path = "/todos",
@@ -67,32 +67,32 @@ class SpringConverterConsumesTest {
                             Endpoint(
                                     path = "/tags",
                                     httpMethod = GET,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
+                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("name" to String())))
                             ),
                             Endpoint(
                                     path = "/tags",
                                     httpMethod = POST,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
+                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("name" to String())))
                             ),
                             Endpoint(
                                     path = "/tags",
                                     httpMethod = HEAD,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
+                                    consumes = mapOf(APPLICATION_XML_VALUE to null)
                             ),
                             Endpoint(
                                     path = "/tags",
                                     httpMethod = PUT,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
+                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("name" to String())))
                             ),
                             Endpoint(
                                     path = "/tags",
                                     httpMethod = PATCH,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
+                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("name" to String())))
                             ),
                             Endpoint(
                                     path = "/tags",
                                     httpMethod = DELETE,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
+                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("name" to String())))
                             ),
                             Endpoint("/tags", OPTIONS)
                     )
@@ -120,48 +120,48 @@ class SpringConverterConsumesTest {
                                     path = "/todos",
                                     httpMethod = GET,
                                     consumes = mapOf(
-                                            APPLICATION_XML_VALUE to Object(mapOf("name" to String())),
-                                            TEXT_PLAIN_VALUE to Object(mapOf("name" to String()))
+                                            APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                            TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
                                     )
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = POST,
                                     consumes = mapOf(
-                                            APPLICATION_XML_VALUE to Object(mapOf("name" to String())),
-                                            TEXT_PLAIN_VALUE to Object(mapOf("name" to String()))
+                                            APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                            TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
                                     )
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = HEAD,
                                     consumes = mapOf(
-                                            APPLICATION_XML_VALUE to Object(mapOf("name" to String())),
-                                            TEXT_PLAIN_VALUE to Object(mapOf("name" to String()))
+                                            APPLICATION_XML_VALUE to null,
+                                            TEXT_PLAIN_VALUE to null
                                     )
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = PUT,
                                     consumes = mapOf(
-                                            APPLICATION_XML_VALUE to Object(mapOf("name" to String())),
-                                            TEXT_PLAIN_VALUE to Object(mapOf("name" to String()))
+                                            APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                            TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
                                     )
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = PATCH,
                                     consumes = mapOf(
-                                            APPLICATION_XML_VALUE to Object(mapOf("name" to String())),
-                                            TEXT_PLAIN_VALUE to Object(mapOf("name" to String()))
+                                            APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                            TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
                                     )
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = DELETE,
                                     consumes = mapOf(
-                                            APPLICATION_XML_VALUE to Object(mapOf("name" to String())),
-                                            TEXT_PLAIN_VALUE to Object(mapOf("name" to String()))
+                                            APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                            TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
                                     )
                             ),
                             Endpoint("/todos", OPTIONS),
@@ -185,8 +185,8 @@ class SpringConverterConsumesTest {
                                     path = "/tags",
                                     httpMethod = HEAD,
                                     consumes = mapOf(
-                                            APPLICATION_XML_VALUE to Object(mapOf("name" to String())),
-                                            TEXT_PLAIN_VALUE to Object(mapOf("name" to String()))
+                                            APPLICATION_XML_VALUE to null,
+                                            TEXT_PLAIN_VALUE to null
                                     )
                             ),
                             Endpoint(
@@ -248,7 +248,7 @@ class SpringConverterConsumesTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = HEAD,
-                                    consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String())))
+                                    consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
                             ),
                             Endpoint(
                                     path = "/todos",
@@ -300,7 +300,7 @@ class SpringConverterConsumesTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = HEAD,
-                                    consumes = mapOf(ALL_VALUE to String())
+                                    consumes = mapOf(ALL_VALUE to null)
                             ),
                             Endpoint(
                                     path = "/todos",
@@ -384,7 +384,7 @@ class SpringConverterConsumesTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = HEAD,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
+                                    consumes = mapOf(APPLICATION_XML_VALUE to null)
                             ),
                             Endpoint(
                                     path = "/todos",
@@ -426,32 +426,50 @@ class SpringConverterConsumesTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                    consumes = mapOf(
+                                        APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                        TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
+                                    )
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = POST,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                    consumes = mapOf(
+                                        APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                        TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
+                                    )
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = HEAD,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                    consumes = mapOf(
+                                        APPLICATION_XML_VALUE to null,
+                                        TEXT_PLAIN_VALUE to null
+                                    )
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = PUT,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                    consumes = mapOf(
+                                        APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                        TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
+                                    )
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = PATCH,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                    consumes = mapOf(
+                                        APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                        TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
+                                    )
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = DELETE,
-                                    consumes = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                    consumes = mapOf(
+                                        APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                        TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
+                                    )
                             ),
                             Endpoint("/todos", OPTIONS)
                     )
@@ -478,12 +496,12 @@ class SpringConverterConsumesTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                    consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String())))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = POST,
-                                    consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                    consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String())))
                             ),
                             Endpoint(
                                     path = "/todos",
@@ -493,17 +511,17 @@ class SpringConverterConsumesTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = PUT,
-                                    consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                    consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String())))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = PATCH,
-                                    consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                    consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String())))
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = DELETE,
-                                    consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                    consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String())))
                             ),
                             Endpoint("/todos", OPTIONS)
                     )
@@ -540,7 +558,7 @@ class SpringConverterConsumesTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = HEAD,
-                                    consumes = mapOf(ALL_VALUE to String())
+                                    consumes = mapOf(ALL_VALUE to null)
                             ),
                             Endpoint(
                                     path = "/todos",
@@ -615,7 +633,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null)
+                                consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -647,7 +665,10 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                    TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -679,7 +700,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -716,7 +737,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = HEAD,
-                                consumes = mapOf(ALL_VALUE to String())
+                                consumes = mapOf(ALL_VALUE to null)
                         ),
                         Endpoint("/todos", OPTIONS)
                 )
@@ -930,7 +951,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null)
+                                consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -962,7 +983,10 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                    TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -994,7 +1018,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1031,7 +1055,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = HEAD,
-                                consumes = mapOf(ALL_VALUE to String())
+                                consumes = mapOf(ALL_VALUE to null)
                         ),
                         Endpoint("/todos", OPTIONS)
                 )
@@ -1086,7 +1110,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null)
+                                consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1118,7 +1142,10 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                    TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1150,7 +1177,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1187,7 +1214,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = HEAD,
-                                consumes = mapOf(ALL_VALUE to String())
+                                consumes = mapOf(ALL_VALUE to null)
                         ),
                         Endpoint("/todos", OPTIONS)
                 )
@@ -1242,7 +1269,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null)
+                                consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1274,7 +1301,10 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                    TEXT_PLAIN_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1306,7 +1336,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                consumes = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1343,7 +1373,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = HEAD,
-                                consumes = mapOf(ALL_VALUE to String())
+                                consumes = mapOf(ALL_VALUE to null)
                         ),
                         Endpoint("/todos", OPTIONS)
                 )
@@ -1398,12 +1428,12 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null)
+                                consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null)
+                                consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1413,28 +1443,28 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null)
+                                consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null)
+                                consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = DELETE,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null)
+                                consumes = mapOf(APPLICATION_XML_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint("/todos", OPTIONS),
                         Endpoint(
                                 path = "/tags",
                                 httpMethod = GET,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(TEXT_PLAIN_VALUE to Object(mapOf("name" to String())))
                         ),
                         Endpoint(
                                 path = "/tags",
                                 httpMethod = POST,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(TEXT_PLAIN_VALUE to Object(mapOf("name" to String())))
                         ),
                         Endpoint(
                                 path = "/tags",
@@ -1444,17 +1474,17 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/tags",
                                 httpMethod = PUT,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(TEXT_PLAIN_VALUE to Object(mapOf("name" to String())))
                         ),
                         Endpoint(
                                 path = "/tags",
                                 httpMethod = PATCH,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(TEXT_PLAIN_VALUE to Object(mapOf("name" to String())))
                         ),
                         Endpoint(
                                 path = "/tags",
                                 httpMethod = DELETE,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(TEXT_PLAIN_VALUE to Object(mapOf("name" to String())))
                         ),
                         Endpoint("/tags", OPTIONS)
                 )
@@ -1481,63 +1511,99 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null, APPLICATION_XHTML_XML_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                    APPLICATION_XHTML_XML_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null, APPLICATION_XHTML_XML_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                    APPLICATION_XHTML_XML_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = HEAD,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null, APPLICATION_XHTML_XML_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_XML_VALUE to null,
+                                    APPLICATION_XHTML_XML_VALUE to null
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null, APPLICATION_XHTML_XML_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                    APPLICATION_XHTML_XML_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null, APPLICATION_XHTML_XML_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                    APPLICATION_XHTML_XML_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = DELETE,
-                                consumes = mapOf(APPLICATION_XML_VALUE to null, APPLICATION_XHTML_XML_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_XML_VALUE to Object(mapOf("description" to String())),
+                                    APPLICATION_XHTML_XML_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint("/todos", OPTIONS),
                         Endpoint(
                                 path = "/tags",
                                 httpMethod = GET,
-                                consumes = mapOf(APPLICATION_PDF_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_PDF_VALUE to Object(mapOf("name" to String())),
+                                    TEXT_PLAIN_VALUE to Object(mapOf("name" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/tags",
                                 httpMethod = POST,
-                                consumes = mapOf(APPLICATION_PDF_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_PDF_VALUE to Object(mapOf("name" to String())),
+                                    TEXT_PLAIN_VALUE to Object(mapOf("name" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/tags",
                                 httpMethod = HEAD,
-                                consumes = mapOf(APPLICATION_PDF_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_PDF_VALUE to null,
+                                    TEXT_PLAIN_VALUE to null
+                                )
                         ),
                         Endpoint(
                                 path = "/tags",
                                 httpMethod = PUT,
-                                consumes = mapOf(APPLICATION_PDF_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_PDF_VALUE to Object(mapOf("name" to String())),
+                                    TEXT_PLAIN_VALUE to Object(mapOf("name" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/tags",
                                 httpMethod = PATCH,
-                                consumes = mapOf(APPLICATION_PDF_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_PDF_VALUE to Object(mapOf("name" to String())),
+                                    TEXT_PLAIN_VALUE to Object(mapOf("name" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/tags",
                                 httpMethod = DELETE,
-                                consumes = mapOf(APPLICATION_PDF_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(
+                                    APPLICATION_PDF_VALUE to Object(mapOf("name" to String())),
+                                    TEXT_PLAIN_VALUE to Object(mapOf("name" to String()))
+                                )
                         ),
                         Endpoint("/tags", OPTIONS)
                 )
@@ -1564,7 +1630,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(TEXT_PLAIN_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1596,7 +1662,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = DELETE,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(TEXT_PLAIN_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1628,7 +1694,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(TEXT_PLAIN_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1660,7 +1726,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(TEXT_PLAIN_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1692,7 +1758,7 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null)
+                                consumes = mapOf(TEXT_PLAIN_VALUE to Object(mapOf("description" to String())))
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1724,7 +1790,10 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null, APPLICATION_PDF_VALUE to null)
+                                consumes = mapOf(
+                                    TEXT_PLAIN_VALUE to Object(mapOf("description" to String())),
+                                    APPLICATION_PDF_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1756,7 +1825,10 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = DELETE,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null, APPLICATION_PDF_VALUE to null)
+                                consumes = mapOf(
+                                    TEXT_PLAIN_VALUE to Object(mapOf("description" to String())),
+                                    APPLICATION_PDF_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1788,7 +1860,10 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null, APPLICATION_PDF_VALUE to null)
+                                consumes = mapOf(
+                                    TEXT_PLAIN_VALUE to Object(mapOf("description" to String())),
+                                    APPLICATION_PDF_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1820,7 +1895,10 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null, APPLICATION_PDF_VALUE to null)
+                                consumes = mapOf(
+                                    TEXT_PLAIN_VALUE to Object(mapOf("description" to String())),
+                                    APPLICATION_PDF_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1852,7 +1930,10 @@ class SpringConverterConsumesTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                consumes = mapOf(TEXT_PLAIN_VALUE to null, APPLICATION_PDF_VALUE to null)
+                                consumes = mapOf(
+                                    TEXT_PLAIN_VALUE to Object(mapOf("description" to String())),
+                                    APPLICATION_PDF_VALUE to Object(mapOf("description" to String()))
+                                )
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1885,7 +1966,7 @@ class SpringConverterConsumesTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            consumes = mapOf(APPLICATION_PDF_VALUE to null)
+                            consumes = mapOf(APPLICATION_PDF_VALUE to Object(mapOf("description" to String())))
                     ),
                     Endpoint(
                             path = "/todos",

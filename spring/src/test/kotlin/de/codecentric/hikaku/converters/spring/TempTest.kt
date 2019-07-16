@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import javax.servlet.http.HttpServletResponse
 import javax.validation.constraints.Min
+import kotlin.test.assertEquals
 
 @SpringBootApplication
 open class DummyApp
@@ -43,6 +44,13 @@ open class ControllerUnderTest {
 class SpringSchemaTest {
     @Autowired
     lateinit var context: ConfigurableApplicationContext
+
+    @Test
+    fun `test fancy serialization`() {
+        assertEquals("String(maxLength = 2)", String(maxLength = 2).toString())
+        assertEquals("Array(items = String())", Array(items = String()).toString())
+        assertEquals("Object(properties = mapOf(\"name\" to String()))", Object(properties = mapOf("name" to String())).toString())
+    }
 
     @Test
     fun `exhaustive-ish test`() {
