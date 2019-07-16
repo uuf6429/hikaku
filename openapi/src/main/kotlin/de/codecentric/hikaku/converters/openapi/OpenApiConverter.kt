@@ -68,12 +68,8 @@ class OpenApiConverter private constructor(private val specificationContent: Str
                         queryParameters = commonQueryParameters.union(extractQueryParameters(operation?.parameters)),
                         pathParameters = commonPathParameters.union(extractPathParameters(operation?.parameters)),
                         headerParameters = commonHeaderParameters.union(extractHeaderParameters(operation?.parameters)),
-                        consumes = extractConsumesMediaTypes(operation)
-                                .map { it to null }
-                                .toMap(),
-                        produces = extractProduceMediaTypes(operation)
-                                .map { it to null }
-                                .toMap(),
+                        consumes = extractConsumesMediaTypes(operation),
+                        produces = extractProduceMediaTypes(operation),
                         deprecated = operation?.deprecated ?: false
                 )
             }

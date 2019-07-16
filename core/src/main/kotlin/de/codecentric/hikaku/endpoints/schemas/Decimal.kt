@@ -1,11 +1,11 @@
 package de.codecentric.hikaku.endpoints.schemas
 
-data class Float(
-        val minValue: kotlin.Float? = null,
-        val maxValue: kotlin.Float? = null
+data class Decimal(
+        val minValue: Double? = null,
+        val maxValue: Double? = null
 ) : Schema {
     override fun toString() =
-            "Float(${this.stringifyAssignedProperties(
+            "Decimal(${this.stringifyAssignedProperties(
                 this::minValue to null,
                 this::maxValue to null
             )})"

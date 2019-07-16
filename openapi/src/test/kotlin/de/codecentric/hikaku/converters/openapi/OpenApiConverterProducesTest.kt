@@ -3,6 +3,8 @@ package de.codecentric.hikaku.converters.openapi
 import de.codecentric.hikaku.endpoints.Endpoint
 import de.codecentric.hikaku.endpoints.HttpMethod.DELETE
 import de.codecentric.hikaku.endpoints.HttpMethod.GET
+import de.codecentric.hikaku.endpoints.schemas.Array
+import de.codecentric.hikaku.endpoints.schemas.String
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.nio.file.Paths
@@ -17,7 +19,7 @@ class OpenApiConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = mapOf("application/json" to null)
+                        produces = mapOf("application/json" to Array(String()))
                 )
         )
 
@@ -51,7 +53,7 @@ class OpenApiConverterProducesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = mapOf("application/xml" to null)
+                        produces = mapOf("application/xml" to Array(Array(String())))
                 )
         )
 
@@ -70,7 +72,7 @@ class OpenApiConverterProducesTest {
                 Endpoint(
                         path = "/todos/query",
                         httpMethod = GET,
-                        produces = mapOf("application/json" to null, "text/plain" to null)
+                        produces = mapOf("application/json" to Array(String()), "text/plain" to String())
                 )
         )
 

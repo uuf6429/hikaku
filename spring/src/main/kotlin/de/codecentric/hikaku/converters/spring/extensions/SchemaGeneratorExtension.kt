@@ -3,7 +3,7 @@ package de.codecentric.hikaku.converters.spring.extensions
 import de.codecentric.hikaku.endpoints.schemas.*
 import de.codecentric.hikaku.endpoints.schemas.Array
 import de.codecentric.hikaku.endpoints.schemas.Boolean
-import de.codecentric.hikaku.endpoints.schemas.Float
+import de.codecentric.hikaku.endpoints.schemas.Decimal
 import de.codecentric.hikaku.endpoints.schemas.String
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -39,9 +39,9 @@ internal fun KClass<*>.toSchema(annotations: KAnnotatedElement?, variantArgs: Li
         this.java == kotlin.Boolean::class.java ->
             Boolean()
         this.java == kotlin.Int::class.java ->
-            Integer(annotations.minInt, annotations.maxInt)
+            Integer(annotations.minLng, annotations.maxLng)
         this.java == kotlin.Float::class.java ->
-            Float(annotations.minDec, annotations.maxDec)
+            Decimal(annotations.minDec, annotations.maxDec)
         this.java == kotlin.String::class.java ->
             String(annotations.minInt, annotations.maxInt)
         this.isData ->
@@ -77,6 +77,14 @@ internal fun KClass<*>.toSchema(annotations: KAnnotatedElement?, variantArgs: Li
     }
 }
 
+internal val KAnnotatedElement?.minLng
+    get() =
+        this?.findAnnotation<Min>()?.value
+
+internal val KAnnotatedElement?.maxLng
+    get() =
+        this?.findAnnotation<Max>()?.value
+
 internal val KAnnotatedElement?.minInt
     get() =
         this?.findAnnotation<Min>()?.value?.toInt()
@@ -87,11 +95,11 @@ internal val KAnnotatedElement?.maxInt
 
 internal val KAnnotatedElement?.minDec
     get() =
-        this?.findAnnotation<DecimalMin>()?.value?.toFloat()
+        this?.findAnnotation<DecimalMin>()?.value?.toDouble()
 
 internal val KAnnotatedElement?.maxDec
     get() =
-        this?.findAnnotation<DecimalMax>()?.value?.toFloat()
+        this?.findAnnotation<DecimalMax>()?.value?.toDouble()
 
 data class AnnotationExtractor(override val annotations: List<Annotation>) : KAnnotatedElement {
     constructor(vararg providers: KAnnotatedElement?) :

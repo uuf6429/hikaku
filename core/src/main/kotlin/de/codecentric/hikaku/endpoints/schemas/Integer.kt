@@ -1,8 +1,8 @@
 package de.codecentric.hikaku.endpoints.schemas
 
 data class Integer(
-        val minValue: Int? = null,
-        val maxValue: Int? = null
+        val minValue: Long? = null,
+        val maxValue: Long? = null
 ) : Schema {
     override fun toString() =
             "Integer(${this.stringifyAssignedProperties(

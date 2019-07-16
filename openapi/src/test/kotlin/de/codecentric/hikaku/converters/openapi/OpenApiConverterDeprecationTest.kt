@@ -2,6 +2,9 @@ package de.codecentric.hikaku.converters.openapi
 
 import de.codecentric.hikaku.endpoints.Endpoint
 import de.codecentric.hikaku.endpoints.HttpMethod.GET
+import de.codecentric.hikaku.endpoints.schemas.Array
+import de.codecentric.hikaku.endpoints.schemas.Integer
+import de.codecentric.hikaku.endpoints.schemas.String
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.nio.file.Paths
@@ -16,7 +19,7 @@ class OpenApiConverterDeprecationTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = mapOf("application/json" to null),
+                        produces = mapOf("application/json" to Array(String())),
                         deprecated = false
                 )
         )
@@ -36,7 +39,7 @@ class OpenApiConverterDeprecationTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = GET,
-                        produces = mapOf("application/json" to null),
+                        produces = mapOf("application/json" to Array(String())),
                         deprecated = true
                 )
         )

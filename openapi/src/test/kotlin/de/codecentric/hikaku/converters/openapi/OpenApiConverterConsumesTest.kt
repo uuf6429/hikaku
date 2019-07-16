@@ -2,6 +2,8 @@ package de.codecentric.hikaku.converters.openapi
 
 import de.codecentric.hikaku.endpoints.Endpoint
 import de.codecentric.hikaku.endpoints.HttpMethod.POST
+import de.codecentric.hikaku.endpoints.schemas.Array
+import de.codecentric.hikaku.endpoints.schemas.String
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.nio.file.Paths
@@ -16,7 +18,7 @@ class OpenApiConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = POST,
-                        consumes = mapOf("application/xml" to null)
+                        consumes = mapOf("application/xml" to Array(String()))
                 )
         )
 
@@ -35,7 +37,7 @@ class OpenApiConverterConsumesTest {
                 Endpoint(
                         path = "/todos",
                         httpMethod = POST,
-                        consumes = mapOf("application/xml" to null)
+                        consumes = mapOf("application/xml" to Array(Array(String())))
                 )
         )
 

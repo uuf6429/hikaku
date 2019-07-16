@@ -1,7 +1,7 @@
 package de.codecentric.hikaku.endpoints.schemas
 
 data class Array(
-        val items: Schema,
+        val items: Schema?,
         val minItems: Int? = null,
         val maxItems: Int? = null
 ) : Schema {
