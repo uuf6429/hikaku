@@ -34,8 +34,8 @@ internal fun KType.toSchema(): Schema? =
                 this.arguments.map { it.toSchema() }
         )
 
-internal fun KClass<*>.toSchema(annotations: KAnnotatedElement?, variantArgs: List<Schema?>?): Schema? {
-    return when {
+internal fun KClass<*>.toSchema(annotations: KAnnotatedElement?, variantArgs: List<Schema?>?): Schema =
+    when {
         this.java == kotlin.Boolean::class.java ->
             Boolean()
         this.java == kotlin.Int::class.java ->
@@ -44,7 +44,15 @@ internal fun KClass<*>.toSchema(annotations: KAnnotatedElement?, variantArgs: Li
             Decimal(annotations.minDec, annotations.maxDec)
         this.java == kotlin.String::class.java ->
             String(annotations.minInt, annotations.maxInt)
-        this.isData ->
+        this.isSubclassOf(Iterable::class) ->
+            Array(
+                checkNotNull(variantArgs?.getOrNull(0)) {
+                    "Could not determine type of array"
+                },
+                annotations.minInt,
+                annotations.maxInt
+            )
+        else ->
             Object(
                     this.memberProperties
                             .map { prop ->
@@ -56,26 +64,12 @@ internal fun KClass<*>.toSchema(annotations: KAnnotatedElement?, variantArgs: Li
                                         prop.returnType.arguments.mapNotNull { type -> type.toSchema() }
                                 )
                             }
-                            .filter {
-                                it.second != null
-                            }
                             .map {
-                                it.first to it.second!!
+                                it.first to it.second
                             }
                             .toMap()
             )
-        this.isSubclassOf(Iterable::class) ->
-            Array(
-                    checkNotNull(variantArgs?.getOrNull(0)) {
-                        "Could not determine type of array"
-                    },
-                    annotations.minInt,
-                    annotations.maxInt
-            )
-        else ->
-            null
     }
-}
 
 internal val KAnnotatedElement?.minLng
     get() =
