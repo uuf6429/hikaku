@@ -6,7 +6,7 @@ data class Decimal(
 ) : Schema {
     override fun toString() =
             "Decimal(${this.stringifyAssignedProperties(
-                this::minValue to null,
-                this::maxValue to null
+                    this::minValue to null,
+                    this::maxValue to null
             )})"
 }

@@ -6,7 +6,7 @@ data class Integer(
 ) : Schema {
     override fun toString() =
             "Integer(${this.stringifyAssignedProperties(
-                this::minValue to null,
-                this::maxValue to null
+                    this::minValue to null,
+                    this::maxValue to null
             )})"
 }

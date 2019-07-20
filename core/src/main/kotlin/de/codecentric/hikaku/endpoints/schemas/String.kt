@@ -6,7 +6,7 @@ data class String(
 ) : Schema {
     override fun toString() =
             "String(${this.stringifyAssignedProperties(
-                this::minLength to null,
-                this::maxLength to null
+                    this::minLength to null,
+                    this::maxLength to null
             )})"
 }

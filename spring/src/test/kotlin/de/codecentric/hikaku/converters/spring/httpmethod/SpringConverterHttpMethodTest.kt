@@ -1227,20 +1227,20 @@ class HttpMethodTestController {
                             path = "/error",
                             httpMethod = GET,
                             produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf(
-                                "entries" to Array(Object(mapOf("key" to Object(mapOf()), "value" to Object(mapOf())))),
-                                "keys" to Array(Object(mapOf())),
+                                "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                "keys" to Array(Object()),
                                 "size" to Integer(),
-                                "values" to Array(Object(mapOf()))
+                                "values" to Array(Object())
                             )))
                     ),
                     Endpoint(
                             path = "/error",
                             httpMethod = POST,
                             produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf(
-                                "entries" to Array(Object(mapOf("key" to Object(mapOf()), "value" to Object(mapOf())))),
-                                "keys" to Array(Object(mapOf())),
+                                "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                "keys" to Array(Object()),
                                 "size" to Integer(),
-                                "values" to Array(Object(mapOf()))
+                                "values" to Array(Object())
                             )))
                     ),
                     Endpoint(
@@ -1252,30 +1252,30 @@ class HttpMethodTestController {
                             path = "/error",
                             httpMethod = PUT,
                             produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf(
-                                "entries" to Array(Object(mapOf("key" to Object(mapOf()), "value" to Object(mapOf())))),
-                                "keys" to Array(Object(mapOf())),
+                                "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                "keys" to Array(Object()),
                                 "size" to Integer(),
-                                "values" to Array(Object(mapOf()))
+                                "values" to Array(Object())
                             )))
                     ),
                     Endpoint(
                             path = "/error",
                             httpMethod = PATCH,
                             produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf(
-                                "entries" to Array(Object(mapOf("key" to Object(mapOf()), "value" to Object(mapOf())))),
-                                "keys" to Array(Object(mapOf())),
+                                "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                "keys" to Array(Object()),
                                 "size" to Integer(),
-                                "values" to Array(Object(mapOf()))
+                                "values" to Array(Object())
                             )))
                     ),
                     Endpoint(
                             path = "/error",
                             httpMethod = DELETE,
                             produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf(
-                                "entries" to Array(Object(mapOf("key" to Object(mapOf()), "value" to Object(mapOf())))),
-                                "keys" to Array(Object(mapOf())),
+                                "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                "keys" to Array(Object()),
                                 "size" to Integer(),
-                                "values" to Array(Object(mapOf()))
+                                "values" to Array(Object())
                             )))
                     ),
                     Endpoint("/error", OPTIONS),
@@ -1283,11 +1283,11 @@ class HttpMethodTestController {
                             path = "/error",
                             httpMethod = GET,
                             produces = mapOf(TEXT_HTML_VALUE to Object(mapOf(
-                                "view" to Object(mapOf()),
+                                "view" to Object(),
                                 "model" to Object(mapOf(
                                     "size" to Integer(),
-                                    "values" to Array(Object(mapOf())),
-                                    "entries" to Array(Object(mapOf("key" to Object(mapOf()), "value" to Object(mapOf())))),
+                                    "values" to Array(Object()),
+                                    "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
                                     "keys" to Array(String()))
                                 ),
                                 "status" to Object(mapOf(
@@ -1303,11 +1303,11 @@ class HttpMethodTestController {
                             path = "/error",
                             httpMethod = POST,
                             produces = mapOf(TEXT_HTML_VALUE to Object(mapOf(
-                                "view" to Object(mapOf()),
+                                "view" to Object(),
                                 "model" to Object(mapOf(
                                     "size" to Integer(),
-                                    "values" to Array(Object(mapOf())),
-                                    "entries" to Array(Object(mapOf("key" to Object(mapOf()), "value" to Object(mapOf())))),
+                                    "values" to Array(Object()),
+                                    "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
                                     "keys" to Array(String()))
                                 ),
                                 "status" to Object(mapOf(
@@ -1328,11 +1328,11 @@ class HttpMethodTestController {
                             path = "/error",
                             httpMethod = PUT,
                             produces = mapOf(TEXT_HTML_VALUE to Object(mapOf(
-                                "view" to Object(mapOf()),
+                                "view" to Object(),
                                 "model" to Object(mapOf(
                                     "size" to Integer(),
-                                    "values" to Array(Object(mapOf())),
-                                    "entries" to Array(Object(mapOf("key" to Object(mapOf()), "value" to Object(mapOf())))),
+                                    "values" to Array(Object()),
+                                    "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
                                     "keys" to Array(String()))
                                 ),
                                 "status" to Object(mapOf(
@@ -1348,11 +1348,11 @@ class HttpMethodTestController {
                             path = "/error",
                             httpMethod = PATCH,
                             produces = mapOf(TEXT_HTML_VALUE to Object(mapOf(
-                                "view" to Object(mapOf()),
+                                "view" to Object(),
                                 "model" to Object(mapOf(
                                     "size" to Integer(),
-                                    "values" to Array(Object(mapOf())),
-                                    "entries" to Array(Object(mapOf("key" to Object(mapOf()), "value" to Object(mapOf())))),
+                                    "values" to Array(Object()),
+                                    "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
                                     "keys" to Array(String()))
                                 ),
                                 "status" to Object(mapOf(
@@ -1368,11 +1368,11 @@ class HttpMethodTestController {
                             path = "/error",
                             httpMethod = DELETE,
                             produces = mapOf(TEXT_HTML_VALUE to Object(mapOf(
-                                "view" to Object(mapOf()),
+                                "view" to Object(),
                                 "model" to Object(mapOf(
                                     "size" to Integer(),
-                                    "values" to Array(Object(mapOf())),
-                                    "entries" to Array(Object(mapOf("key" to Object(mapOf()), "value" to Object(mapOf())))),
+                                    "values" to Array(Object()),
+                                    "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
                                     "keys" to Array(String()))
                                 ),
                                 "status" to Object(mapOf(

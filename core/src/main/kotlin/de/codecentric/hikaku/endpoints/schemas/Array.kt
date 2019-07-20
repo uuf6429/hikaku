@@ -7,8 +7,8 @@ data class Array(
 ) : Schema {
     override fun toString() =
             "Array(${this.stringifyAssignedProperties(
-                this::items to null,
-                this::minItems to null,
-                this::maxItems to null
+                    this::items to emptyList<Schema>(),
+                    this::minItems to null,
+                    this::maxItems to null
             )})"
 }

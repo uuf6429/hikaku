@@ -3,6 +3,9 @@ package de.codecentric.hikaku.converters.spring.produces.responsebody
 import de.codecentric.hikaku.converters.spring.SpringConverter
 import de.codecentric.hikaku.endpoints.Endpoint
 import de.codecentric.hikaku.endpoints.HttpMethod.*
+import de.codecentric.hikaku.endpoints.schemas.Array
+import de.codecentric.hikaku.endpoints.schemas.Boolean
+import de.codecentric.hikaku.endpoints.schemas.Integer
 import de.codecentric.hikaku.endpoints.schemas.Object
 import de.codecentric.hikaku.endpoints.schemas.String
 import org.assertj.core.api.Assertions.assertThat
@@ -470,12 +473,12 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = GET,
-                                    produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                    produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object())
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = POST,
-                                    produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                    produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object())
                             ),
                             Endpoint(
                                     path = "/todos",
@@ -485,17 +488,17 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = PUT,
-                                    produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                    produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object())
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = PATCH,
-                                    produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                    produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object())
                             ),
                             Endpoint(
                                     path = "/todos",
                                     httpMethod = DELETE,
-                                    produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                    produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object())
                             ),
                             Endpoint("/todos", OPTIONS)
                     )
@@ -635,7 +638,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                produces = mapOf(APPLICATION_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -667,7 +670,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                produces = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object(), TEXT_PLAIN_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -699,7 +702,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -815,7 +818,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = DELETE,
-                                produces = mapOf(APPLICATION_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -847,7 +850,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = DELETE,
-                                produces = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object(), TEXT_PLAIN_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -879,7 +882,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = DELETE,
-                                produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -995,7 +998,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                produces = mapOf(APPLICATION_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1027,7 +1030,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                produces = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object(), TEXT_PLAIN_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1059,7 +1062,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1175,7 +1178,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                produces = mapOf(APPLICATION_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1207,7 +1210,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                produces = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object(), TEXT_PLAIN_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1239,7 +1242,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1355,7 +1358,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                produces = mapOf(APPLICATION_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1387,7 +1390,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                produces = mapOf(APPLICATION_XML_VALUE to null, TEXT_PLAIN_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object(), TEXT_PLAIN_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1419,7 +1422,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                                produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1535,12 +1538,12 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                produces = mapOf(TEXT_PLAIN_VALUE to null)
+                                produces = mapOf(TEXT_PLAIN_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                produces = mapOf(TEXT_PLAIN_VALUE to null)
+                                produces = mapOf(TEXT_PLAIN_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1550,28 +1553,28 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                produces = mapOf(TEXT_PLAIN_VALUE to null)
+                                produces = mapOf(TEXT_PLAIN_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                produces = mapOf(TEXT_PLAIN_VALUE to null)
+                                produces = mapOf(TEXT_PLAIN_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = DELETE,
-                                produces = mapOf(TEXT_PLAIN_VALUE to null)
+                                produces = mapOf(TEXT_PLAIN_VALUE to Object())
                         ),
                         Endpoint("/todos", OPTIONS),
                         Endpoint(
                                 path = "/todos/{id}",
                                 httpMethod = GET,
-                                produces = mapOf(APPLICATION_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos/{id}",
                                 httpMethod = POST,
-                                produces = mapOf(APPLICATION_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos/{id}",
@@ -1581,17 +1584,17 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos/{id}",
                                 httpMethod = PUT,
-                                produces = mapOf(APPLICATION_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos/{id}",
                                 httpMethod = PATCH,
-                                produces = mapOf(APPLICATION_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos/{id}",
                                 httpMethod = DELETE,
-                                produces = mapOf(APPLICATION_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object())
                         ),
                         Endpoint("/todos/{id}", OPTIONS)
                 )
@@ -1618,12 +1621,12 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = GET,
-                                produces = mapOf(TEXT_PLAIN_VALUE to null, APPLICATION_PDF_VALUE to null)
+                                produces = mapOf(TEXT_PLAIN_VALUE to Object(), APPLICATION_PDF_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = POST,
-                                produces = mapOf(TEXT_PLAIN_VALUE to null, APPLICATION_PDF_VALUE to null)
+                                produces = mapOf(TEXT_PLAIN_VALUE to Object(), APPLICATION_PDF_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
@@ -1633,28 +1636,28 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PUT,
-                                produces = mapOf(TEXT_PLAIN_VALUE to null, APPLICATION_PDF_VALUE to null)
+                                produces = mapOf(TEXT_PLAIN_VALUE to Object(), APPLICATION_PDF_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = PATCH,
-                                produces = mapOf(TEXT_PLAIN_VALUE to null, APPLICATION_PDF_VALUE to null)
+                                produces = mapOf(TEXT_PLAIN_VALUE to Object(), APPLICATION_PDF_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos",
                                 httpMethod = DELETE,
-                                produces = mapOf(TEXT_PLAIN_VALUE to null, APPLICATION_PDF_VALUE to null)
+                                produces = mapOf(TEXT_PLAIN_VALUE to Object(), APPLICATION_PDF_VALUE to Object())
                         ),
                         Endpoint("/todos", OPTIONS),
                         Endpoint(
                                 path = "/todos/{id}",
                                 httpMethod = GET,
-                                produces = mapOf(APPLICATION_XML_VALUE to null, APPLICATION_XHTML_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object(), APPLICATION_XHTML_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos/{id}",
                                 httpMethod = POST,
-                                produces = mapOf(APPLICATION_XML_VALUE to null, APPLICATION_XHTML_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object(), APPLICATION_XHTML_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos/{id}",
@@ -1664,17 +1667,17 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                         Endpoint(
                                 path = "/todos/{id}",
                                 httpMethod = PUT,
-                                produces = mapOf(APPLICATION_XML_VALUE to null, APPLICATION_XHTML_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object(), APPLICATION_XHTML_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos/{id}",
                                 httpMethod = PATCH,
-                                produces = mapOf(APPLICATION_XML_VALUE to null, APPLICATION_XHTML_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object(), APPLICATION_XHTML_XML_VALUE to Object())
                         ),
                         Endpoint(
                                 path = "/todos/{id}",
                                 httpMethod = DELETE,
-                                produces = mapOf(APPLICATION_XML_VALUE to null, APPLICATION_XHTML_XML_VALUE to null)
+                                produces = mapOf(APPLICATION_XML_VALUE to Object(), APPLICATION_XHTML_XML_VALUE to Object())
                         ),
                         Endpoint("/todos/{id}", OPTIONS)
                 )
@@ -2037,7 +2040,7 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                     Endpoint(
                             path = "/todos",
                             httpMethod = GET,
-                            produces = mapOf(APPLICATION_XML_VALUE to null)
+                            produces = mapOf(APPLICATION_XML_VALUE to Object())
                     ),
                     Endpoint(
                             path = "/todos",
@@ -2048,12 +2051,22 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                     Endpoint(
                             path = "/error",
                             httpMethod = GET,
-                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf(
+                                    "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                    "keys" to Array(Object()),
+                                    "size" to Integer(),
+                                    "values" to Array(Object())
+                            )))
                     ),
                     Endpoint(
                             path = "/error",
                             httpMethod = POST,
-                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf(
+                                    "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                    "keys" to Array(Object()),
+                                    "size" to Integer(),
+                                    "values" to Array(Object())
+                            )))
                     ),
                     Endpoint(
                             path = "/error",
@@ -2063,28 +2076,73 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                     Endpoint(
                             path = "/error",
                             httpMethod = PUT,
-                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf(
+                                    "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                    "keys" to Array(Object()),
+                                    "size" to Integer(),
+                                    "values" to Array(Object())
+                            )))
                     ),
                     Endpoint(
                             path = "/error",
                             httpMethod = PATCH,
-                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf(
+                                    "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                    "keys" to Array(Object()),
+                                    "size" to Integer(),
+                                    "values" to Array(Object())
+                            )))
                     ),
                     Endpoint(
                             path = "/error",
                             httpMethod = DELETE,
-                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to null)
+                            produces = mapOf(APPLICATION_JSON_UTF8_VALUE to Object(mapOf(
+                                    "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                    "keys" to Array(Object()),
+                                    "size" to Integer(),
+                                    "values" to Array(Object())
+                            )))
                     ),
                     Endpoint("/error", OPTIONS),
                     Endpoint(
                             path = "/error",
                             httpMethod = GET,
-                            produces = mapOf(TEXT_HTML_VALUE to null)
+                            produces = mapOf(TEXT_HTML_VALUE to Object(mapOf(
+                                    "view" to Object(),
+                                    "model" to Object(mapOf(
+                                            "size" to Integer(),
+                                            "values" to Array(Object()),
+                                            "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                            "keys" to Array(String())
+                                    )),
+                                    "status" to Object(mapOf(
+                                            "value" to Integer(),
+                                            "reasonPhrase" to String(),
+                                            "name" to String(),
+                                            "ordinal" to Integer()
+                                    )),
+                                    "cleared" to Boolean()
+                            )))
                     ),
                     Endpoint(
                             path = "/error",
                             httpMethod = POST,
-                            produces = mapOf(TEXT_HTML_VALUE to null)
+                            produces = mapOf(TEXT_HTML_VALUE to Object(mapOf(
+                                    "view" to Object(),
+                                    "model" to Object(mapOf(
+                                            "size" to Integer(),
+                                            "values" to Array(Object()),
+                                            "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                            "keys" to Array(String())
+                                    )),
+                                    "status" to Object(mapOf(
+                                            "value" to Integer(),
+                                            "reasonPhrase" to String(),
+                                            "name" to String(),
+                                            "ordinal" to Integer()
+                                    )),
+                                    "cleared" to Boolean()
+                            )))
                     ),
                     Endpoint(
                             path = "/error",
@@ -2094,17 +2152,62 @@ class SpringConverterProducesResponseBodyAnnotationTest {
                     Endpoint(
                             path = "/error",
                             httpMethod = PUT,
-                            produces = mapOf(TEXT_HTML_VALUE to null)
+                            produces = mapOf(TEXT_HTML_VALUE to Object(mapOf(
+                                    "view" to Object(),
+                                    "model" to Object(mapOf(
+                                            "size" to Integer(),
+                                            "values" to Array(Object()),
+                                            "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                            "keys" to Array(String())
+                                    )),
+                                    "status" to Object(mapOf(
+                                            "value" to Integer(),
+                                            "reasonPhrase" to String(),
+                                            "name" to String(),
+                                            "ordinal" to Integer()
+                                    )),
+                                    "cleared" to Boolean()
+                            )))
                     ),
                     Endpoint(
                             path = "/error",
                             httpMethod = PATCH,
-                            produces = mapOf(TEXT_HTML_VALUE to null)
+                            produces = mapOf(TEXT_HTML_VALUE to Object(mapOf(
+                                    "view" to Object(),
+                                    "model" to Object(mapOf(
+                                            "size" to Integer(),
+                                            "values" to Array(Object()),
+                                            "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                            "keys" to Array(String())
+                                    )),
+                                    "status" to Object(mapOf(
+                                            "value" to Integer(),
+                                            "reasonPhrase" to String(),
+                                            "name" to String(),
+                                            "ordinal" to Integer()
+                                    )),
+                                    "cleared" to Boolean()
+                            )))
                     ),
                     Endpoint(
                             path = "/error",
                             httpMethod = DELETE,
-                            produces = mapOf(TEXT_HTML_VALUE to null)
+                            produces = mapOf(TEXT_HTML_VALUE to Object(mapOf(
+                                    "view" to Object(),
+                                    "model" to Object(mapOf(
+                                            "size" to Integer(),
+                                            "values" to Array(Object()),
+                                            "entries" to Array(Object(mapOf("key" to Object(), "value" to Object()))),
+                                            "keys" to Array(String())
+                                    )),
+                                    "status" to Object(mapOf(
+                                            "value" to Integer(),
+                                            "reasonPhrase" to String(),
+                                            "name" to String(),
+                                            "ordinal" to Integer()
+                                    )),
+                                    "cleared" to Boolean()
+                            )))
                     ),
                     Endpoint("/error", OPTIONS)
             )
