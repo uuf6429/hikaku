@@ -1,6 +1,10 @@
 package de.codecentric.hikaku.endpoints.schemas
 
-data class Boolean(val unused: Nothing? = null) : Schema {
+data class Boolean(
+        val nullable: kotlin.Boolean = false
+) : Schema {
     override fun toString() =
-            "Boolean()"
+            "Boolean(${this.stringifyAssignedProperties(
+                    this::nullable to false
+            )})"
 }

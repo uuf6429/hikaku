@@ -23,20 +23,21 @@ internal fun OpenApiSchema<*>.toSchema(openApi: OpenAPI): Schema? =
         else
             when (this) {
                 is OpenApiBooleanSchema ->
-                    Boolean()
+                    Boolean(this.nullable)
                 is OpenApiIntegerSchema ->
-                    Integer(this.minimum?.toLong(), this.maximum?.toLong())
+                    Integer(this.minimum?.toLong(), this.maximum?.toLong(), this.nullable)
                 is OpenApiNumberSchema ->
-                    Decimal(this.minimum?.toDouble(), this.maximum?.toDouble())
+                    Decimal(this.minimum?.toDouble(), this.maximum?.toDouble(), this.nullable)
                 is OpenApiStringSchema ->
-                    String(this.minLength, this.maxLength)
+                    String(this.minLength, this.maxLength, this.nullable)
                 is OpenApiArraySchema ->
-                    Array(this.items.toSchema(openApi), this.minItems, this.maxItems)
+                    Array(this.items.toSchema(openApi), this.minItems, this.maxItems, this.nullable)
                 is OpenApiObjectSchema ->
                     Object(
-                        this.properties
-                            .map { it.key to it.value.toSchema(openApi)!! }
-                            .toMap()
+                            this.properties
+                                    .map { it.key to it.value.toSchema(openApi)!! }
+                                    .toMap(),
+                            this.nullable
                     )
                 else ->
                     null // TODO throw exception
@@ -44,11 +45,11 @@ internal fun OpenApiSchema<*>.toSchema(openApi: OpenAPI): Schema? =
 
 
 internal fun OpenApiSchema<*>.findReferencedSchema(openApi: OpenAPI, ref: kotlin.String): OpenApiSchema<*>? =
-    openApi.components
-        .schemas[
-            Regex("#/components/schemas/(?<key>.+)")
-                .find(ref)
-                ?.groups
-                ?.get("key")
-                ?.value
+        openApi.components
+                .schemas[
+                Regex("#/components/schemas/(?<key>.+)")
+                        .find(ref)
+                        ?.groups
+                        ?.get("key")
+                        ?.value
         ]

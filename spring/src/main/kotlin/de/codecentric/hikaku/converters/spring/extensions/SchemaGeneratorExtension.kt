@@ -19,57 +19,63 @@ import kotlin.reflect.jvm.jvmErasure
 internal fun KParameter.toSchema(): Schema? =
         this.type.jvmErasure.toSchema(
                 this.type,
-                this.type.arguments.map { it.toSchema() }
+                this.type.arguments.map { it.toSchema() },
+                this.type.isMarkedNullable
         )
 
 internal fun KTypeProjection.toSchema(): Schema? =
         this.type?.jvmErasure?.toSchema(
                 this.type,
-                this.type?.arguments?.map { it.toSchema() }
+                this.type?.arguments?.map { it.toSchema() },
+                this.type?.isMarkedNullable ?: false
         )
 
 internal fun KType.toSchema(): Schema? =
         this.jvmErasure.toSchema(
                 this,
-                this.arguments.map { it.toSchema() }
+                this.arguments.map { it.toSchema() },
+                this.isMarkedNullable
         )
 
-internal fun KClass<*>.toSchema(annotations: KAnnotatedElement?, variantArgs: List<Schema?>?): Schema =
-    when {
-        this.java == kotlin.Boolean::class.java ->
-            Boolean()
-        this.java == kotlin.Int::class.java ->
-            Integer(annotations.minLng, annotations.maxLng)
-        this.java == kotlin.Float::class.java ->
-            Decimal(annotations.minDec, annotations.maxDec)
-        this.java == kotlin.String::class.java ->
-            String(annotations.minInt, annotations.maxInt)
-        this.isSubclassOf(Iterable::class) ->
-            Array(
-                checkNotNull(variantArgs?.getOrNull(0)) {
-                    "Could not determine type of array"
-                },
-                annotations.minInt,
-                annotations.maxInt
-            )
-        else ->
-            Object(
-                    this.memberProperties
-                            .map { prop ->
-                                prop.name to prop.returnType.jvmErasure.toSchema(
-                                        AnnotationExtractor(
-                                            prop,
-                                            this.primaryConstructor?.parameters?.find { it.name == prop.name }
-                                        ),
-                                        prop.returnType.arguments.mapNotNull { type -> type.toSchema() }
-                                )
-                            }
-                            .map {
-                                it.first to it.second
-                            }
-                            .toMap()
-            )
-    }
+internal fun KClass<*>.toSchema(annotations: KAnnotatedElement?, variantArgs: List<Schema?>?, isNullable: kotlin.Boolean): Schema =
+        when {
+            this.java == kotlin.Boolean::class.java ->
+                Boolean(isNullable)
+            this.java == kotlin.Int::class.java ->
+                Integer(annotations.minLng, annotations.maxLng, isNullable)
+            this.java == kotlin.Float::class.java ->
+                Decimal(annotations.minDec, annotations.maxDec, isNullable)
+            this.java == kotlin.String::class.java ->
+                String(annotations.minInt, annotations.maxInt, isNullable)
+            this.isSubclassOf(Iterable::class) ->
+                Array(
+                        checkNotNull(variantArgs?.getOrNull(0)) {
+                            "Could not determine type of array"
+                        },
+                        annotations.minInt,
+                        annotations.maxInt,
+                        isNullable
+                )
+            else ->
+                Object(
+                        this.memberProperties
+                                .map { prop ->
+                                    prop.name to prop.returnType.jvmErasure.toSchema(
+                                            AnnotationExtractor(
+                                                    prop,
+                                                    this.primaryConstructor?.parameters?.find { it.name == prop.name }
+                                            ),
+                                            prop.returnType.arguments.mapNotNull { type -> type.toSchema() },
+                                            prop.returnType.isMarkedNullable
+                                    )
+                                }
+                                .map {
+                                    it.first to it.second
+                                }
+                                .toMap(),
+                        isNullable
+                )
+        }
 
 internal val KAnnotatedElement?.minLng
     get() =
@@ -97,5 +103,5 @@ internal val KAnnotatedElement?.maxDec
 
 data class AnnotationExtractor(override val annotations: List<Annotation>) : KAnnotatedElement {
     constructor(vararg providers: KAnnotatedElement?) :
-        this(providers.map { it?.annotations.orEmpty() }.flatten())
+            this(providers.map { it?.annotations.orEmpty() }.flatten())
 }
