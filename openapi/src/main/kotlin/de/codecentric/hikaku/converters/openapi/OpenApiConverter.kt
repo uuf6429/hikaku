@@ -20,7 +20,7 @@ import java.nio.file.Path
 /**
  * Extracts and converts [Endpoint]s from OpenAPI 3.0.X document. Either a *.yaml*, *.yml* or a *.json* file.
  */
-class OpenApiConverter private constructor(private val specificationContent: String) : AbstractEndpointConverter() {
+class OpenApiConverter constructor(private val specificationContent: String) : AbstractEndpointConverter() {
 
     @JvmOverloads
     constructor(openApiSpecification: File, charset: Charset = UTF_8) : this(openApiSpecification.toPath(), charset)

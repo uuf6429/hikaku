@@ -1,5 +1,6 @@
-package de.codecentric.hikaku.converters.spring
+package de.codecentric.hikaku.temp
 
+import de.codecentric.hikaku.converters.spring.SpringConverter
 import de.codecentric.hikaku.endpoints.Endpoint
 import de.codecentric.hikaku.endpoints.HttpMethod.*
 import de.codecentric.hikaku.endpoints.schemas.Array
@@ -61,7 +62,7 @@ class SpringSchemaTest {
     }
 
     @Test
-    fun `exhaustive-ish test`() {
+    fun `test spring schema`() {
         //given
         val specification: Set<Endpoint> = setOf(
                 Endpoint(
