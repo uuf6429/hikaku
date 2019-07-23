@@ -23,7 +23,7 @@ internal fun OpenApiSchema<*>.toSchema(openApi: OpenAPI): Schema? =
         else
             when (this) {
                 is OpenApiBooleanSchema ->
-                    Boolean(this.nullable)
+                    Boolean(this.nullable ?: false)
                 is OpenApiIntegerSchema ->
                     Integer(this.minimum?.toLong(), this.maximum?.toLong(), this.nullable ?: false)
                 is OpenApiNumberSchema ->
